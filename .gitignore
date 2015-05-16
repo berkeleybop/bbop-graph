@@ -1,3 +1,35 @@
+###
+### My stuff.
+###
+
+## Do not make earlier mistakes with documentation.
+doc
+!README.org
+
+## Node modules are handled by "npm install" and out package.json
+node_modules
+
+## Do not commit our TAGS
+TAGS
+
+## Emacs things (from 
+## https://github.com/github/gitignore/blob/master/Global/Emacs.gitignore).
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+# Org-mode
+.org-id-locations
+*_archive
+
+###
+### Node-y stuff.
+###
+
 # Logs
 logs
 *.log
@@ -22,6 +54,7 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
+## Handled above.
+# # Dependency directory
+# # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+# node_modules

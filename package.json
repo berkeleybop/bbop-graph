@@ -1,0 +1,55 @@
+{
+    "name": "bbop-graph",
+    "version": "0.0.1",
+    "license": "BSD",
+    "description": "General purpose (mathematical) graph library in JavaScript.",
+    "keywords": [
+        "node",
+        "npm",
+        "client",
+        "server",
+        "Gene Ontology",
+        "GO",
+        "bbop",
+        "Berkeley BOP",
+        "math",
+        "mathematics",
+        "graph"
+    ],
+    "author": "SJC <sjcarbon@lbl.gov> (http://berkeleybop.org/)",
+    "homepage": "http://berkeleybop.org/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/berkeleybop/bbop-graph"
+    },
+    "engines": {
+        "node": ">= 0.12.2",
+        "npm": ">= 2.7.4"
+    },
+    "dependencies": {
+        "underscore": "1.8.3"
+    },
+    "devDependencies": {
+        "chai": "^2.3.0",
+        "del": "^1.1.1",
+        "gulp": "^3.8.11",
+        "gulp-bump": "^0.3.0",
+        "gulp-git": "^1.2.3",
+        "gulp-jsdoc": "^0.1.4",
+        "gulp-mocha": "^2.0.1",
+        "gulp-rename": "^1.2.2",
+        "gulp-uglify": "^1.2.0"
+    },
+    "bundleDependencies": [],
+    "private": false,
+    "main": "lib/graph.js",
+    "bugs": {
+        "url": "https://github.com/berkeleybop/bbop-graph/issues"
+    },
+    "directories": {
+        "doc": "doc"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}

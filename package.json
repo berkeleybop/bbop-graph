@@ -27,6 +27,7 @@
         "npm": ">= 2.7.4"
     },
     "dependencies": {
+        "bbop-core": "latest",
         "underscore": "1.8.3"
     },
     "devDependencies": {
@@ -42,12 +43,14 @@
     },
     "bundleDependencies": [],
     "private": false,
+    "directories": {
+        "doc": "doc",
+        "lib": "lib",
+        "tests": "tests"
+    },
     "main": "lib/graph.js",
     "bugs": {
         "url": "https://github.com/berkeleybop/bbop-graph/issues"
-    },
-    "directories": {
-        "doc": "doc"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

@@ -3,7 +3,6 @@
 ////
 
 var assert = require('chai').assert;
-
 var model = new require('..');
 
 //console.log(">>>: ", model);
@@ -31,13 +30,13 @@ describe('trivial creations', function(){
 // (function(){
 
 //      // Setup.
-//      var n1 = new bbop.model.node('a');
-//      var n2 = new bbop.model.node('b');
-//      var n3 = new bbop.model.node('c');
+//      var n1 = new model.node('a');
+//      var n2 = new model.node('b');
+//      var n3 = new model.node('c');
 
-//      var e1 = new bbop.model.edge(n1, n2);
-//      var e2 = new bbop.model.edge(n2, n3, 'foo');
-//      var e3 = new bbop.model.edge('d', 'e', 'bar');
+//      var e1 = new model.edge(n1, n2);
+//      var e2 = new model.edge(n2, n3, 'foo');
+//      var e3 = new model.edge('d', 'e', 'bar');
 
 //      mr_t.is_defined(e1, 'at least this would be nice (edge 1)');
 //      mr_t.is_defined(e2, 'at least this would be nice (edge 2)');
@@ -47,7 +46,7 @@ describe('trivial creations', function(){
 //      mr_t.is_same_atom('b', e1.object_id(), 'is b');
 //      mr_t.is_same_atom('e', e3.object_id(), 'is e');
 
-//      mr_t.is_same_atom(bbop.model.default_predicate, e1.predicate_id(), 'is p');
+//      mr_t.is_same_atom(model.default_predicate, e1.predicate_id(), 'is p');
 //      mr_t.is_same_atom('foo', e2.predicate_id(), 'is p 2');
 
 //  })();
@@ -65,24 +64,24 @@ describe('trivial creations', function(){
 //      //    \\___//  <-- non-default relationship (d is_a b)
 //      //     \---/
 //      //
-//      var g = new bbop.model.graph();
-//      g.add_node(new bbop.model.node('a'));
-//      g.add_node(new bbop.model.node('b'));
-//      g.add_node(new bbop.model.node('c'));
-//      g.add_node(new bbop.model.node('d'));
-//      g.add_node(new bbop.model.node('e'));
-//      g.add_node(new bbop.model.node('n'));
-//      g.add_node(new bbop.model.node('x'));
-//      g.add_node(new bbop.model.node('z'));
-//      g.add_edge(new bbop.model.edge('b', 'a'));
-//      g.add_edge(new bbop.model.edge('c', 'a'));
-//      g.add_edge(new bbop.model.edge('d', 'c'));
-//      g.add_edge(new bbop.model.edge('e', 'c'));
-//      g.add_edge(new bbop.model.edge('d', 'n'));
-//      g.add_edge(new bbop.model.edge('d', 'b', 'is_a'));
-//      g.add_edge(new bbop.model.edge('y', 'x'));
+//      var g = new model.graph();
+//      g.add_node(new model.node('a'));
+//      g.add_node(new model.node('b'));
+//      g.add_node(new model.node('c'));
+//      g.add_node(new model.node('d'));
+//      g.add_node(new model.node('e'));
+//      g.add_node(new model.node('n'));
+//      g.add_node(new model.node('x'));
+//      g.add_node(new model.node('z'));
+//      g.add_edge(new model.edge('b', 'a'));
+//      g.add_edge(new model.edge('c', 'a'));
+//      g.add_edge(new model.edge('d', 'c'));
+//      g.add_edge(new model.edge('e', 'c'));
+//      g.add_edge(new model.edge('d', 'n'));
+//      g.add_edge(new model.edge('d', 'b', 'is_a'));
+//      g.add_edge(new model.edge('y', 'x'));
 
-//      var dpred = bbop.model.default_predicate;
+//      var dpred = model.default_predicate;
 
 //      // Test graph construction.
 //      mr_t.is_defined(g, 'at least this would be nice (graph)');
@@ -137,7 +136,7 @@ describe('trivial creations', function(){
 //      mr_t.is_same_atom(0, g.get_child_nodes('x').length, 'x: -');
 
 //      // Test edges and predicates.
-//      //g.add_edge(new bbop.model.edge('d', 'b', 'is_a'));
+//      //g.add_edge(new model.edge('d', 'b', 'is_a'));
 //      var med = g.get_edges('d', 'b');
 //      mr_t.is_same_atom(med.length, 1, 'one edge');
 //      mr_t.is_same_atom(med[0].predicate_id(), 'is_a', 'one edge is_a');
@@ -203,7 +202,7 @@ describe('trivial creations', function(){
 //      ///
 
 //      var jo = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],"edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
-//      var g1 = new bbop.model.graph();
+//      var g1 = new model.graph();
 //      var result1 = g1.load_json(jo);
 
 //      mr_t.is_same_atom(true, g1.is_root_node('b'), 'root b');
@@ -219,7 +218,7 @@ describe('trivial creations', function(){
 
 //      var go = {"nodes":[{"id":"GO:0009987","lbl":"cellular process"},{"id":"GO:0048869","lbl":"cellular developmental process"},{"id":"GO:0048731","lbl":"system development"},{"id":"GO:0007275","lbl":"multicellular organismal development"},{"id":"GO:0030154","lbl":"cell differentiation"},{"id":"GO:0007399","lbl":"nervous system development"},{"id":"GO:0048856","lbl":"anatomical structure development"},{"id":"GO:0008150","lbl":"biological_process"},{"id":"GO:0022008","lbl":"neurogenesis"},{"id":"GO:0042063","lbl":"gliogenesis"},{"id":"GO:0032502","lbl":"developmental process"},{"id":"GO:0032501","lbl":"multicellular organismal process"},{"id":"GO:0048699","lbl":"generation of neurons"}],"edges":[{"sub":"GO:0022008","obj":"GO:0007399","pred":"part_of"},{"sub":"GO:0042063","obj":"GO:0022008","pred":"is_a"},{"sub":"GO:0022008","obj":"GO:0030154","pred":"is_a"},{"sub":"GO:0032501","obj":"GO:0008150","pred":"is_a"},{"sub":"GO:0032502","obj":"GO:0008150","pred":"is_a"},{"sub":"GO:0048731","obj":"GO:0048856","pred":"is_a"},{"sub":"GO:0007399","obj":"GO:0048731","pred":"is_a"},{"sub":"GO:0007275","obj":"GO:0032501","pred":"is_a"},{"sub":"GO:0007275","obj":"GO:0032502","pred":"is_a"},{"sub":"GO:0048856","obj":"GO:0032502","pred":"is_a"},{"sub":"GO:0048869","obj":"GO:0009987","pred":"is_a"},{"sub":"GO:0048699","obj":"GO:0022008","pred":"is_a"},{"sub":"GO:0048869","obj":"GO:0032502","pred":"is_a"},{"sub":"GO:0009987","obj":"GO:0008150","pred":"is_a"},{"sub":"GO:0030154","obj":"GO:0048869","pred":"is_a"},{"sub":"GO:0048731","obj":"GO:0007275","pred":"part_of"}]};
 
-//      var g2 = new bbop.model.graph();
+//      var g2 = new model.graph();
 //      var result2 = g2.load_json(go);
 
 //      var leaves = g2.get_child_nodes('GO:0022008');
@@ -277,7 +276,7 @@ describe('trivial creations', function(){
 //      ]
 //     };
 
-//      var g = new bbop.model.graph();
+//      var g = new model.graph();
 //      var result2 = g.load_json(tax);
 
 //      mr_t.is_true(g.is_complete(), 'tax is complete');
@@ -296,7 +295,7 @@ describe('trivial creations', function(){
 // // TODO: Cannot test until I get a better object testing function.
 // (function(){
 //      var simp = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],"edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
-//      var g = new bbop.model.graph();
+//      var g = new model.graph();
 //      var l = g.load_json(simp);
 //      var r = g.to_json();
 //      //mr_t.is_same_hash(simp, r, 'round trip');

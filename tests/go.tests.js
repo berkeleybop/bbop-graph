@@ -5,18 +5,25 @@
 var assert = require('chai').assert;
 var model = new require('..');
 
-// Remember, we are running from the project root, so relative to
-// there (?).
-var go_nodes = require('./go.nodes.json');
-var go_edges = require('./go.edges.json');
-
 ///
 /// Start unit testing.
 ///
 
 describe('test using GO data', function(){
 
+    var go_nodes = null;
+    var go_edges = null;
+
+    // Pre-run.    
+    before(function() {
+	// Remember, we are running from the project root, so relative
+	// to there (?).
+	go_nodes = require('./go.nodes.json');
+	go_edges = require('./go.edges.json');
+    });
+
     it('all good', function(){
+	this.timeout(30000); // 30s
 
 	// Global testing graph.
 	var g = new model.graph();

@@ -5,6 +5,8 @@
 ## Do not make earlier mistakes with documentation.
 doc
 !README.org
+# ## We'll actually generate this from README.org for doc tasks.
+# README.md
 
 ## Node modules are handled by "npm install" and out package.json
 node_modules

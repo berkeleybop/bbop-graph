@@ -9,10 +9,13 @@ var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var git = require('gulp-git');
 var bump = require('gulp-bump');
+//var pandoc = require('gulp-pandoc');
 
 var paths = {
+    readme: ['./README.md'],
     tests: ['tests/*.test.js', 'tests/*.tests.js'],
-    docable: ['lib/*.js']
+    docable: ['lib/*.js', './README.md'],
+    transients:['./doc/*', '!./doc/README.org']
 };
 
 // Browser runtime environment construction.
@@ -25,14 +28,36 @@ gulp.task('patch-bump', function(){
 });
 
 // Build docs directory with JSDoc.
-gulp.task('doc', function() {
-    gulp.src(paths.docable)
+//gulp.task('doc', ['md-to-org', 'jsdoc']);
+gulp.task('doc', ['jsdoc']);
+
+// // Convert README.org to a README.md for JSDoc to use as an index.
+// // TODO: My pandoc does not support the org reader yet, so di it the other way
+// // for now
+// //gulp.task('org-to-md', function() {
+// gulp.task('md-to-org', function() {
+//     gulp.src('./README.md')
+//     //gulp.src('./README.org')
+//         .pipe(pandoc({
+// 	    // from: 'orgmode',
+// 	    // to: 'markdown',
+// 	    from: 'markdown',
+// 	    to: 'orgmode',
+// 	    ext: '.org',
+// 	    args: ['--smart']
+// 	}))
+//         .pipe(gulp.dest('./'));
+// });
+
+// Build docs directory with JSDoc.
+gulp.task('jsdoc', function() {
+    gulp.src(paths.docable, paths.readme)
         .pipe(jsdoc('./doc'));
 });
 
 // Get rid of anything that is transient.
 gulp.task('clean', function(cb) {
-    del(['./doc/*', '!./doc/README.org']);
+    del(paths.transients);
 });
 
 // Testing with mocha/chai.
@@ -75,6 +100,12 @@ gulp.task('git-tag', function(){
     git.tag('go-exp-widget-' + pver, 'version message', function (err){
 	if(err) throw err;
     });
+});
+
+// Rerun doc build when a file changes.
+gulp.task('watch-doc', function() {
+  gulp.watch(paths.docable, ['doc']);
+  gulp.watch(paths.readme, ['doc']);
 });
 
 // The default task (called when you run `gulp` from cli)

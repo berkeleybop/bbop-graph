@@ -9,7 +9,7 @@ var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var git = require('gulp-git');
 var bump = require('gulp-bump');
-//var pandoc = require('gulp-pandoc');
+var del = require('del');
 
 var paths = {
     readme: ['./README.md'],
@@ -21,43 +21,43 @@ var paths = {
 // Browser runtime environment construction.
 gulp.task('build', ['patch-bump', 'doc']);
 
-gulp.task('patch-bump', function(){
+gulp.task('patch-bump', function(cb){
     gulp.src('./package.json')
 	.pipe(bump({type: 'patch'}))
 	.pipe(gulp.dest('./'));
+    cb(null);
+});
+
+gulp.task('minor-bump', function(cb){
+    gulp.src('./package.json')
+	.pipe(bump({type: 'minor'}))
+	.pipe(gulp.dest('./'));
+    cb(null);
+});
+
+gulp.task('major-bump', function(cb){
+    gulp.src('./package.json')
+	.pipe(bump({type: 'major'}))
+	.pipe(gulp.dest('./'));
+    cb(null);
 });
 
 // Build docs directory with JSDoc.
 //gulp.task('doc', ['md-to-org', 'jsdoc']);
 gulp.task('doc', ['jsdoc']);
 
-// // Convert README.org to a README.md for JSDoc to use as an index.
-// // TODO: My pandoc does not support the org reader yet, so di it the other way
-// // for now
-// //gulp.task('org-to-md', function() {
-// gulp.task('md-to-org', function() {
-//     gulp.src('./README.md')
-//     //gulp.src('./README.org')
-//         .pipe(pandoc({
-// 	    // from: 'orgmode',
-// 	    // to: 'markdown',
-// 	    from: 'markdown',
-// 	    to: 'orgmode',
-// 	    ext: '.org',
-// 	    args: ['--smart']
-// 	}))
-//         .pipe(gulp.dest('./'));
-// });
-
 // Build docs directory with JSDoc.
-gulp.task('jsdoc', function() {
+// Completely dependent on clean before running doc.
+gulp.task('jsdoc', ['clean'], function(cb) {
     gulp.src(paths.docable, paths.readme)
         .pipe(jsdoc('./doc'));
+    cb(null);
 });
 
 // Get rid of anything that is transient.
 gulp.task('clean', function(cb) {
     del(paths.transients);
+    cb(null);
 });
 
 // Testing with mocha/chai.

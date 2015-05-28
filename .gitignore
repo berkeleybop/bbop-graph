@@ -3,7 +3,7 @@
 ###
 
 ## Do not make earlier mistakes with documentation.
-doc
+#doc
 !README.org
 # ## We'll actually generate this from README.org for doc tasks.
 # README.md

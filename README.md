@@ -12,4 +12,4 @@ General purpose (mathematical) graph library in JavaScript.
 
 ## API
 
-[index](https://berkeleybop.github.io/bbop-graph/docs/index.html)
+[index](https://berkeleybop.github.io/bbop-graph/doc/index.html)

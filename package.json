@@ -54,6 +54,7 @@
         "url": "https://github.com/berkeleybop/bbop-graph/issues"
     },
     "scripts": {
+	"update-docs": "git checkout gh-pages && git pull && git merge master && gulp doc && git commit -a -m 'bump docs' && git push && git checkout master",
         "test": "./node_modules/.bin/gulp test"
     }
 }

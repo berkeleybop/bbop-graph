@@ -1,6 +1,6 @@
 {
     "name": "bbop-graph",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "license": "BSD-3-Clause",
     "description": "General purpose (mathematical) graph library in JavaScript.",
     "keywords": [

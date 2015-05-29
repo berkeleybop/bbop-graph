@@ -58,7 +58,7 @@ describe('edges', function(){
 	assert.equal('b', e1.object_id(), 'is b');
 	assert.equal('e', e3.object_id(), 'is e');
 	
-	assert.equal(model.default_predicate, e1.predicate_id(), 'is p');
+	assert.equal(e1.default_predicate, e1.predicate_id(), 'is p');
 	assert.equal('foo', e2.predicate_id(), 'is p 2');
 	
     });
@@ -98,7 +98,7 @@ describe('simple model', function(){
 	g.add_edge(new model.edge('d', 'b', 'is_a'));
 	g.add_edge(new model.edge('y', 'x'));
 
-	dpred = model.default_predicate;
+	dpred = g.default_predicate;
     });	
     
     it('graph construction', function(){

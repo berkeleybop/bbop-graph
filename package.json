@@ -1,6 +1,6 @@
 {
     "name": "bbop-graph",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "license": "BSD-3-Clause",
     "description": "General purpose (mathematical) graph library in JavaScript.",
     "keywords": [
@@ -54,7 +54,7 @@
         "url": "https://github.com/berkeleybop/bbop-graph/issues"
     },
     "scripts": {
-	"update-docs": "git checkout gh-pages && git pull && git merge master && gulp doc && git commit -a -m 'bump docs' && git push && git checkout master",
+        "update-docs": "git checkout gh-pages && git pull && git merge master && gulp doc && git commit -a -m 'bump docs' && git push && git checkout master",
         "test": "./node_modules/.bin/gulp test"
     }
 }

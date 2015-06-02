@@ -875,7 +875,7 @@ This will throw an error on any world issues that crop up.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line699">line 699</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line738">line 738</a>
     </li></ul></dd>
     
 
@@ -1031,7 +1031,7 @@ argument. Predicate string/id as optional second.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line952">line 952</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line991">line 991</a>
     </li></ul></dd>
     
 
@@ -1196,7 +1196,7 @@ use the default one.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line907">line 907</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line946">line 946</a>
     </li></ul></dd>
     
 
@@ -1423,7 +1423,7 @@ use the default one.
         
             
 <dt>
-    <h4 class="name" id="get_edges"><span class="type-signature"></span>get_edges<span class="signature">(sub_id, obj_id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="get_edges"><span class="type-signature"></span>get_edges<span class="signature">(sub_id, obj_id)</span><span class="type-signature"> &rarr; {Array}</span></h4>
 
     
 </dt>
@@ -1472,7 +1472,7 @@ entirely new edges.
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -1495,7 +1495,7 @@ entirely new edges.
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -1568,6 +1568,302 @@ entirely new edges.
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="get_edges_by_object"><span class="type-signature"></span>get_edges_by_object<span class="signature">(obj_id)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Return all edges (copies) of given object id. Returns entirely new
+edges.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the object_id of the edge we're looking for</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line692">line 692</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    list of <edge>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="get_edges_by_subject"><span class="type-signature"></span>get_edges_by_subject<span class="signature">(sub_id)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Return all edges (copies) of given subject id. Returns entirely new
+edges.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sub_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the subject_id of the edge we're looking for</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line672">line 672</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    list of <edge>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
         
 
     
@@ -1620,7 +1916,7 @@ calculation into the add_node and add_edge methods? O(|#nodes|)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line792">line 792</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line831">line 831</a>
     </li></ul></dd>
     
 
@@ -1916,7 +2212,7 @@ TODO: it might be nice to memoize this since others depend on it.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line839">line 839</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line878">line 878</a>
     </li></ul></dd>
     
 
@@ -2069,7 +2365,7 @@ use the default one.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line881">line 881</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line920">line 920</a>
     </li></ul></dd>
     
 
@@ -2221,7 +2517,7 @@ use the default one.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line673">line 673</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line712">line 712</a>
     </li></ul></dd>
     
 
@@ -2305,7 +2601,7 @@ calculation into the add_node and add_edge methods? O(|#nodes|)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line754">line 754</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line793">line 793</a>
     </li></ul></dd>
     
 
@@ -2389,7 +2685,7 @@ Throws an error if there is a world issue.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line813">line 813</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line852">line 852</a>
     </li></ul></dd>
     
 
@@ -2742,7 +3038,7 @@ independent of predicate.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line775">line 775</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line814">line 814</a>
     </li></ul></dd>
     
 
@@ -2884,7 +3180,7 @@ independent of predicate.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line737">line 737</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line776">line 776</a>
     </li></ul></dd>
     
 
@@ -3024,7 +3320,7 @@ not exported)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1070">line 1070</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1109">line 1109</a>
     </li></ul></dd>
     
 
@@ -3165,7 +3461,7 @@ not exported)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1042">line 1042</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1081">line 1081</a>
     </li></ul></dd>
     
 
@@ -3613,7 +3909,7 @@ not imported)
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1107">line 1107</a>
+        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1146">line 1146</a>
     </li></ul></dd>
     
 
@@ -3684,7 +3980,7 @@ not imported)
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 02 2015 00:49:04 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 02 2015 15:42:40 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -5,7 +5,44 @@
 var assert = require('chai').assert;
 var model = new require('..');
 
-//console.log(">>>: ", model);
+///
+/// Helpers.
+///
+
+// Create graph described below.
+//
+//      a   n   x   z  
+//     / \  |   |
+//    b   c |   y?  <-- y is not extant, just referenced
+//   ||  / \|
+//   || e   d
+//    \\___//  <-- non-default relationship (d is_a b)
+//     \---/
+//
+function _make_set_graph() {
+    var g = new model.graph();
+    g.add_node(new model.node('a'));
+    g.add_node(new model.node('b'));
+    g.add_node(new model.node('c'));
+    g.add_node(new model.node('d'));
+    g.add_node(new model.node('e'));
+    g.add_node(new model.node('n'));
+    g.add_node(new model.node('x'));
+    g.add_node(new model.node('z'));
+    g.add_edge(new model.edge('b', 'a'));
+    g.add_edge(new model.edge('c', 'a'));
+    g.add_edge(new model.edge('d', 'c'));
+    g.add_edge(new model.edge('e', 'c'));
+    g.add_edge(new model.edge('d', 'n'));
+    g.add_edge(new model.edge('d', 'b', 'is_a'));
+    g.add_edge(new model.edge('y', 'x'));
+    
+    return g;
+}
+
+///
+/// Tests.
+///
 
 describe('node', function(){
 
@@ -71,33 +108,7 @@ describe('simple model', function(){
 
     // Pre-run.    
     before(function() {
-	// Create graph described below.
-	//
-	//      a   n   x   z  
-	//     / \  |   |
-	//    b   c |   y?  <-- y is not extant, just referenced
-	//   ||  / \|
-	//   || e   d
-	//    \\___//  <-- non-default relationship (d is_a b)
-	//     \---/
-	//
-	g = new model.graph();
-	g.add_node(new model.node('a'));
-	g.add_node(new model.node('b'));
-	g.add_node(new model.node('c'));
-	g.add_node(new model.node('d'));
-	g.add_node(new model.node('e'));
-	g.add_node(new model.node('n'));
-	g.add_node(new model.node('x'));
-	g.add_node(new model.node('z'));
-	g.add_edge(new model.edge('b', 'a'));
-	g.add_edge(new model.edge('c', 'a'));
-	g.add_edge(new model.edge('d', 'c'));
-	g.add_edge(new model.edge('e', 'c'));
-	g.add_edge(new model.edge('d', 'n'));
-	g.add_edge(new model.edge('d', 'b', 'is_a'));
-	g.add_edge(new model.edge('y', 'x'));
-
+	g = _make_set_graph();
 	dpred = g.default_predicate;
     });	
     
@@ -349,37 +360,6 @@ describe('roundtrip', function(){
 
 describe('removal functions work as expected', function(){
 
-    // Create graph described below.
-    //
-    //      a   n   x   z  
-    //     / \  |   |
-    //    b   c |   y?  <-- y is not extant, just referenced
-    //   ||  / \|
-    //   || e   d
-    //    \\___//  <-- non-default relationship (d is_a b)
-    //     \---/
-    //
-    function _make_set_graph() {
-	var g = new model.graph();
-	g.add_node(new model.node('a'));
-	g.add_node(new model.node('b'));
-	g.add_node(new model.node('c'));
-	g.add_node(new model.node('d'));
-	g.add_node(new model.node('e'));
-	g.add_node(new model.node('n'));
-	g.add_node(new model.node('x'));
-	g.add_node(new model.node('z'));
-	g.add_edge(new model.edge('b', 'a'));
-	g.add_edge(new model.edge('c', 'a'));
-	g.add_edge(new model.edge('d', 'c'));
-	g.add_edge(new model.edge('e', 'c'));
-	g.add_edge(new model.edge('d', 'n'));
-	g.add_edge(new model.edge('d', 'b', 'is_a'));
-	g.add_edge(new model.edge('y', 'x'));
-
-	return g;
-    }
-    
     it('edge removal', function(){
 
 	var g = _make_set_graph();
@@ -533,4 +513,32 @@ describe('removal functions work as expected', function(){
 	assert.equal(g.get_singleton_nodes().length, 0, 'no single');
     });
 
+});
+
+describe('other edge access', function(){
+
+    it('edges by subject and object', function(){
+
+	var g = _make_set_graph();
+
+	assert.equal(g.get_edges_by_subject('d').length, 3,
+		     'd has 3 as subject');
+	assert.equal(g.get_edges_by_object('d').length, 0,
+		     'd has 0 as object');
+
+	assert.equal(g.get_edges_by_subject('z').length, 0,
+		     'z has 0 as subject');
+	assert.equal(g.get_edges_by_object('z').length, 0,
+		     'z has 0 as object');
+
+	assert.equal(g.get_edges_by_subject('y').length, 1,
+		     'y has 1 as subject');
+	assert.equal(g.get_edges_by_object('y').length, 0,
+		     'y has 0 as object');
+
+	assert.equal(g.get_edges_by_subject('n').length, 0,
+		     'n has 0 as subject');
+	assert.equal(g.get_edges_by_object('n').length, 1,
+		     'n has 1 as object');
+    });
 });

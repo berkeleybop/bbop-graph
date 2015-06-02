@@ -108,7 +108,7 @@ describe('simple model', function(){
 	assert.equal(7, g.all_edges().length, '7 edges');
 	assert.equal(7, g.all_edges().length, '7 edges');
 	assert.equal(1, g.get_singleton_nodes().length, 'just one single');
-	assert.equal('z', g.get_singleton_nodes()[0].id(), 'z alone');
+	assert.equal('z', g.get_singleton_nodes()[0].id(), 'z alone singe');
 	assert.equal(1, g.all_dangling().length, 'just one dangle');
 	assert.equal(false, g.is_complete(), 'nope'); 
     });
@@ -317,6 +317,7 @@ describe('failing case from the taxslim', function(){
 	var g = new model.graph();
 	var result2 = g.load_json(tax);
 	
+	assert.equal(g.all_dangling(), 0, 'nothing dangling');
 	assert.isTrue(g.is_complete(), 'tax is complete');
 	
 	var leaves = g.get_child_nodes('NCBITaxon:89593');
@@ -346,3 +347,190 @@ describe('roundtrip', function(){
     
 });
 
+describe('removal functions work as expected', function(){
+
+    // Create graph described below.
+    //
+    //      a   n   x   z  
+    //     / \  |   |
+    //    b   c |   y?  <-- y is not extant, just referenced
+    //   ||  / \|
+    //   || e   d
+    //    \\___//  <-- non-default relationship (d is_a b)
+    //     \---/
+    //
+    function _make_set_graph() {
+	var g = new model.graph();
+	g.add_node(new model.node('a'));
+	g.add_node(new model.node('b'));
+	g.add_node(new model.node('c'));
+	g.add_node(new model.node('d'));
+	g.add_node(new model.node('e'));
+	g.add_node(new model.node('n'));
+	g.add_node(new model.node('x'));
+	g.add_node(new model.node('z'));
+	g.add_edge(new model.edge('b', 'a'));
+	g.add_edge(new model.edge('c', 'a'));
+	g.add_edge(new model.edge('d', 'c'));
+	g.add_edge(new model.edge('e', 'c'));
+	g.add_edge(new model.edge('d', 'n'));
+	g.add_edge(new model.edge('d', 'b', 'is_a'));
+	g.add_edge(new model.edge('y', 'x'));
+
+	return g;
+    }
+    
+    it('edge removal', function(){
+
+	var g = _make_set_graph();
+
+	// No edge there.
+	assert.isFalse(g.remove_edge('z', 'x'), 'no edge');
+	assert.isFalse(g.remove_edge('z', 'x', 'no_such_pred'), 'still no edge');
+	assert.isFalse(g.remove_edge('d', 'b', 'no_such_pred'), 'bad pred');
+	assert.isFalse(g.remove_edge('d', 'b'), 'still bad (default) pred');
+	assert.isFalse(g.remove_edge('d', 'n', 'is_a'), 'bad named pred');
+
+	// Pre.
+	assert.equal(g.all_edges().length, 7, 'seven edges');
+	assert.equal(g.all_predicates().length, 2, 'two pred in graph');
+	assert.equal(g.get_singleton_nodes().length, 1, 'z alone single');
+
+	// Remove two edges, plus remove checks.
+	assert.isTrue(g.remove_edge('d', 'b', 'is_a'), 'good pred');
+	assert.isFalse(g.remove_edge('d', 'b', 'is_a'), 'remove only once (a)');
+	assert.isTrue(g.remove_edge('d', 'n'), 'good (default) pred');
+	assert.isFalse(g.remove_edge('d', 'n'), 'remove only once (b)');
+
+	// Post.
+	assert.equal(g.all_edges().length, 5, 'now five edges');
+	assert.equal(g.all_predicates().length, 1, 'one pred in graph');
+	assert.equal(g.get_singleton_nodes().length, 2, 'z and n single');
+	assert.equal(g.get_child_nodes('n').length, 0, 'n now no kids')
+	assert.equal(g.get_parent_nodes('d').length, 1, 'd now no parent')
+
+	// Look at dangling.
+	assert.equal(g.all_dangling().length, 1, 'just one dangle');
+	assert.isFalse(g.is_complete(), 'nope, not complete');
+
+	// Remove last dangling.
+	assert.isTrue(g.remove_edge('y', 'x'), 'bad edge removed');
+	assert.equal(g.all_dangling().length, 0, 'no dangling remaining');
+    });
+
+    it('node removal (unclean)', function(){
+
+	var g = _make_set_graph();
+
+	// No edge there.
+	assert.isFalse(g.remove_node('q'), 'no node');
+
+	// Remove singleton.
+	assert.equal(g.get_singleton_nodes().length, 1, 'sole single');
+	assert.isTrue(g.remove_node('z'), 'nuke singleton');
+	assert.equal(g.get_singleton_nodes().length, 0, 'sole single no more');
+
+	// Remove the other end of the dangle.
+	assert.equal(g.all_dangling().length, 1, 'one dangle');
+	assert.isTrue(g.remove_node('x'), 'goodbye x');
+	assert.equal(g.all_dangling().length, 2, 'now two dangle');
+
+	// Remove a middle node.
+	assert.isTrue(g.remove_node('d'), 'goodbye d');
+	assert.equal(g.all_dangling().length, 3, 'now three dangle');
+
+	assert.equal(g.all_nodes().length, 5, 'node attrition');
+    });
+
+    it('node removal (clean)', function(){
+
+	var g = _make_set_graph();
+
+	// Start.
+	assert.equal(g.all_nodes().length, 8, 'node start');
+	assert.equal(g.all_edges().length, 7, 'edge start');
+
+	// No edge there.
+	assert.isFalse(g.remove_node('q', true), 'no node');
+
+	// Remove singleton.
+	assert.equal(g.get_singleton_nodes().length, 1, 'sole single');
+	assert.isTrue(g.remove_node('z', true), 'nuke singleton');
+	assert.equal(g.get_singleton_nodes().length, 0, 'sole single no more');
+	assert.equal(g.all_nodes().length, 7, 'node milestone 1');
+	assert.equal(g.all_edges().length, 7, 'edge milestone 1');
+
+	// Remove the other end of the dangle.
+	assert.equal(g.all_dangling().length, 1, 'one dangle');
+	assert.isTrue(g.remove_node('x', true), 'goodbye x');
+	assert.equal(g.all_dangling().length, 0, 'now no dangle');
+	assert.equal(g.all_nodes().length, 6, 'node milestone 2');
+	assert.equal(g.all_edges().length, 6, 'edge milestone 2');
+
+	// Remove a middle node.
+	assert.isTrue(g.remove_node('d', true), 'goodbye d');
+	assert.equal(g.all_dangling().length, 0, 'still no dangle');
+	assert.equal(g.all_nodes().length, 5, 'node attrition');
+	assert.equal(g.all_edges().length, 3, 'edge attrition');
+    });
+
+    it('node removal (total graph by node)', function(){
+
+	var g = _make_set_graph();
+
+	// Start.
+	assert.equal(g.all_nodes().length, 8, 'node start');
+	assert.equal(g.all_edges().length, 7, 'edge start');
+
+	assert.isTrue(g.remove_node('a', true), 'goodbye a');
+	assert.isTrue(g.remove_node('n', true), 'goodbye n');
+	assert.isTrue(g.remove_node('x', true), 'goodbye x');
+	assert.isTrue(g.remove_node('z', true), 'goodbye z')
+	assert.isTrue(g.remove_node('b', true), 'goodbye b');
+	assert.isTrue(g.remove_node('c', true), 'goodbye c');
+	assert.isTrue(g.remove_node('e', true), 'goodbye e');
+	assert.isTrue(g.remove_node('d', true), 'goodbye d');
+
+	assert.equal(g.all_nodes().length, 0, 'no nodes');
+	assert.equal(g.all_edges().length, 0, 'no edges');
+	assert.equal(g.all_dangling().length, 0, 'no dangle');
+	assert.equal(g.get_singleton_nodes().length, 0, 'no single');
+    });
+
+    it('node and edge removal (total graph)', function(){
+
+	var g = _make_set_graph();
+
+	// Start.
+	assert.equal(g.all_nodes().length, 8, 'node start');
+	assert.equal(g.all_edges().length, 7, 'edge start');
+
+	assert.isTrue(g.remove_edge('b', 'a'), 'goodbye b, a');
+	assert.isTrue(g.remove_edge('c', 'a'), 'goodbye c, a');
+	assert.isTrue(g.remove_edge('y', 'x'), 'goodbye y, x');
+	assert.isTrue(g.remove_edge('e', 'c'), 'goodbye e, c');
+	assert.isTrue(g.remove_edge('d', 'c'), 'goodbye d, c');
+	assert.isTrue(g.remove_edge('d', 'n'), 'goodbye d, n');
+	assert.isTrue(g.remove_edge('d', 'b', 'is_a'), 'goodbye d, b');
+
+	assert.equal(g.all_nodes().length, 8, 'node milestone 1');
+	assert.equal(g.all_edges().length, 0, 'edge milestone 1');
+	assert.equal(g.all_dangling().length, 0, 'already no dangle');
+	assert.equal(g.get_singleton_nodes().length, 8, 'all single');
+
+	assert.isTrue(g.remove_node('a'), 'goodbye a');
+	assert.isTrue(g.remove_node('n'), 'goodbye n');
+	assert.isTrue(g.remove_node('x'), 'goodbye x');
+	assert.isTrue(g.remove_node('z'), 'goodbye z')
+	assert.isTrue(g.remove_node('b'), 'goodbye b');
+	assert.isTrue(g.remove_node('c'), 'goodbye c');
+	assert.isTrue(g.remove_node('e'), 'goodbye e');
+	assert.isTrue(g.remove_node('d'), 'goodbye d');
+
+	assert.equal(g.all_nodes().length, 0, 'no nodes');
+	assert.equal(g.all_edges().length, 0, 'no edges');
+	assert.equal(g.all_dangling().length, 0, 'still no dangle');
+	assert.equal(g.get_singleton_nodes().length, 0, 'no single');
+    });
+
+});

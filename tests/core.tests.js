@@ -2,7 +2,9 @@
 //// Some unit testing for bbop-graph.
 ////
 
-var assert = require('chai').assert;
+var chai = require('chai');
+chai.config.includeStack = true;
+assert = chai.assert;
 var model = new require('..');
 
 ///
@@ -247,7 +249,7 @@ describe('loading from JSON (good with Solr/GOlr)', function(){
 
 	var jo = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],"edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
 	g1 = new model.graph();
-	g1.load_json(jo);
+	g1.load_base_json(jo);
 
 	// A bit of GO.
 	// Generate from:
@@ -255,7 +257,7 @@ describe('loading from JSON (good with Solr/GOlr)', function(){
 	//    ./bin/owltools --solr-shunt-test
 	var go = {"nodes":[{"id":"GO:0009987","lbl":"cellular process"},{"id":"GO:0048869","lbl":"cellular developmental process"},{"id":"GO:0048731","lbl":"system development"},{"id":"GO:0007275","lbl":"multicellular organismal development"},{"id":"GO:0030154","lbl":"cell differentiation"},{"id":"GO:0007399","lbl":"nervous system development"},{"id":"GO:0048856","lbl":"anatomical structure development"},{"id":"GO:0008150","lbl":"biological_process"},{"id":"GO:0022008","lbl":"neurogenesis"},{"id":"GO:0042063","lbl":"gliogenesis"},{"id":"GO:0032502","lbl":"developmental process"},{"id":"GO:0032501","lbl":"multicellular organismal process"},{"id":"GO:0048699","lbl":"generation of neurons"}],"edges":[{"sub":"GO:0022008","obj":"GO:0007399","pred":"part_of"},{"sub":"GO:0042063","obj":"GO:0022008","pred":"is_a"},{"sub":"GO:0022008","obj":"GO:0030154","pred":"is_a"},{"sub":"GO:0032501","obj":"GO:0008150","pred":"is_a"},{"sub":"GO:0032502","obj":"GO:0008150","pred":"is_a"},{"sub":"GO:0048731","obj":"GO:0048856","pred":"is_a"},{"sub":"GO:0007399","obj":"GO:0048731","pred":"is_a"},{"sub":"GO:0007275","obj":"GO:0032501","pred":"is_a"},{"sub":"GO:0007275","obj":"GO:0032502","pred":"is_a"},{"sub":"GO:0048856","obj":"GO:0032502","pred":"is_a"},{"sub":"GO:0048869","obj":"GO:0009987","pred":"is_a"},{"sub":"GO:0048699","obj":"GO:0022008","pred":"is_a"},{"sub":"GO:0048869","obj":"GO:0032502","pred":"is_a"},{"sub":"GO:0009987","obj":"GO:0008150","pred":"is_a"},{"sub":"GO:0030154","obj":"GO:0048869","pred":"is_a"},{"sub":"GO:0048731","obj":"GO:0007275","pred":"part_of"}]};
 	g2 = new model.graph();
-	g2.load_json(go);
+	g2.load_base_json(go);
     });
 
     it('graph one okay', function(){
@@ -326,7 +328,7 @@ describe('failing case from the taxslim', function(){
 	    };
 	
 	var g = new model.graph();
-	var result2 = g.load_json(tax);
+	var result2 = g.load_base_json(tax);
 	
 	assert.equal(g.all_dangling(), 0, 'nothing dangling');
 	assert.isTrue(g.is_complete(), 'tax is complete');
@@ -351,7 +353,7 @@ describe('roundtrip', function(){
 	
 	var simp = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],"edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
 	var g = new model.graph();
-	var l = g.load_json(simp);
+	var l = g.load_base_json(simp);
 	var r = g.to_json();
 	assert.deepEqual(simp, r, 'round trip');
     });
@@ -540,5 +542,26 @@ describe('other edge access', function(){
 		     'n has 0 as subject');
 	assert.equal(g.get_edges_by_object('n').length, 1,
 		     'n has 1 as object');
+    });
+});
+
+describe('clone wars', function(){
+
+    it('edge clones are perfect', function(){
+
+	var e = new model.edge('a', 'b', 'is_a');
+	e.type('foo');
+	e.metadata({'a': 1});
+
+	assert.deepEqual(e.clone(), e, 'clone is dupe');
+    });
+
+    it('node clones are perfect', function(){
+
+	var n = new model.edge('a', 'b');
+	n.type('foo');
+	n.metadata({'a': 1});
+
+	assert.deepEqual(n.clone(), n, 'clone is dupe');
     });
 });

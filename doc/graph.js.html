@@ -68,16 +68,13 @@ var default_predicate = 'points_at';
  */
 function node(new_id, new_label){
     this._is_a = 'bbop-graph.node';
-    this._id = new_id || undefined;
-    this._label = new_label || undefined;
+    this._id = new_id || null;
+    this._label = new_label || null;
 
     // Only have a real type if the constructor went properly.
     this._type = 'node';
-    if( ! new_id ){
-	this._type = undefined;	
-    }
 
-    this._metadata = undefined;
+    this._metadata = null;
 }
 
 /**
@@ -118,7 +115,10 @@ node.prototype.label = function(value){
  * @returns {any} value
  */
 node.prototype.metadata = function(value){
-    if(value) this._metadata = value; return this._metadata;
+    if( typeof(value) !== 'undefined' ){
+	this._metadata = value;
+    }
+    return this._metadata;
  };
 
 /**
@@ -128,11 +128,20 @@ node.prototype.metadata = function(value){
  * @returns {node} node
  */
 node.prototype.clone = function(){
-    var tmp_clone = new node(this.id());
-    tmp_clone.type(this.type());
-    tmp_clone.label(this.label());
-    tmp_clone.metadata(bbop.clone(this.metadata()));
-    return tmp_clone;
+
+    // Base.
+    var new_clone = new node(this.id());
+
+    // Type.
+    new_clone.type(this.type());
+
+    // Label.
+    new_clone.label(this.label());
+
+    // Meta.
+    new_clone.metadata(bbop.clone(this.metadata()));
+
+    return new_clone;
 };
 
 ///
@@ -154,6 +163,10 @@ node.prototype.clone = function(){
 function edge(subject, object, predicate){
     this._is_a = 'bbop-graph.edge';
 
+    if( ! subject || ! object ){
+	throw new Error('incomplete arguments for new edge');
+    }
+
     /**
      * The predicate we'll use when none other is defined. You can
      * probably safely ignore this if all of the edges in your graph are
@@ -164,21 +177,23 @@ function edge(subject, object, predicate){
     this.default_predicate = default_predicate;
 
     // Either a string or a node.
-    if( ! subject ){
-	this._subject_id = undefined;
-    }else if( typeof subject == 'string' ){
+    if( typeof(subject) == 'string' ){
 	this._subject_id = subject;	
-    }else{
+    }else if( subject.id &amp;&amp; typeof(subject.id) === 'function' ){
 	this._subject_id = subject.id();
-    }
-    // Either a string or a node.
-    if( ! object ){
-	this._object_id = undefined;
-    }else if( typeof object == 'string' ){
-	this._object_id = object;	
     }else{
-	this._object_id = object.id();
+	throw new Error('cannot parse subject argument for edge');
     }
+
+    // Either a string or a node.
+    if( typeof(object) == 'string' ){
+	this._object_id = object;	
+    }else if( object.id &amp;&amp; typeof(object.id) === 'function' ){
+	this._object_id = object.id();
+    }else{
+	throw new Error('cannot parse object argument for edge');
+    }
+
     // Predicate default or incoming.
     this._predicate_id = this.default_predicate;
     if( predicate ){
@@ -187,12 +202,9 @@ function edge(subject, object, predicate){
 
     // Only have a real type if the constructor went properly.
     this._type = 'edge';
-    if( ! subject || ! object ){
-	this._type = undefined;	
-    }
 
     //
-    this._metadata = undefined;
+    this._metadata = null;
 }
 
 /**
@@ -219,7 +231,8 @@ edge.prototype.object_id = function(){
  * @returns {string} string
  */
 edge.prototype.predicate_id = function(){
-    return this._predicate_id; };
+    return this._predicate_id;
+};
 
 /**
  * Getter/setter for edge type.
@@ -228,7 +241,11 @@ edge.prototype.predicate_id = function(){
  * @returns {} string
  */
 edge.prototype.type = function(value){
-    if(value) this._type = value; return this._type; };
+    if( typeof(value) !== 'undefined' ){
+	this._type = value;
+    }
+    return this._type;
+};
 
 /**
  * Getter/setter for edge metadata.
@@ -239,7 +256,11 @@ edge.prototype.type = function(value){
  * @returns {any} value
  */
 edge.prototype.metadata = function(value){
-    if(value) this._metadata = value; return this._metadata; };
+    if( typeof(value) !== 'undefined' ){
+	this._metadata = value;
+    }
+    return this._metadata;
+};
 
 /**
  * Get a fresh new copy of the current edge (using bbop.clone for
@@ -248,12 +269,22 @@ edge.prototype.metadata = function(value){
  * @returns {edge} - new copy of edge
  */
 edge.prototype.clone = function(){
-    var tmp_clone = new edge(this.subject_id(),
+
+    // Base.
+    var new_clone = new edge(this.subject_id(),
 			     this.object_id(),
 			     this.predicate_id());
-    // Metadata kind of needs to be duped separately.
-    tmp_clone.metadata(bbop.clone(this.metadata()));
-    return tmp_clone;
+
+    // Predicate.
+    new_clone.default_predicate = this.default_predicate;
+
+    // Type.
+    new_clone.type(this.type());
+
+    // Metadata.
+    new_clone.metadata(bbop.clone(this.metadata()));
+
+    return new_clone;
 };
 
 ///
@@ -280,7 +311,7 @@ function graph(){
      */
     this.default_predicate = default_predicate;
 
-    this._id = undefined;
+    this._id = null;
 
     // A per-graph logger.
     this._logger = new bbop.logger(this._is_a);
@@ -307,6 +338,38 @@ function graph(){
     // Table structures for quick lookups of node properties.
     this._is_a_singleton_lookup = {}; // node_id -> true
 }
+
+/**
+ * Create an edge for use in internal operations.
+ *
+ * @param {string} subject - node id string or node
+ * @param {string} object - node id string or node
+ * @param {string} predicate - (optional) a user-friendly description of the node
+ * @returns {edge} bbop model edge
+ */
+graph.prototype.create_edge = function(subject, object, predicate){
+    return new edge(subject, object, predicate);
+};
+
+/**
+ * Create a node for use in internal operations.
+ *
+ * @param {string} new_id - a unique id for the node
+ * @param {string} new_label - (optional) a user-friendly description of the node
+ * @returns {node} new bbop model node
+ */
+graph.prototype.create_node = function(new_id, new_label){
+    return new node(new_id, new_label);
+};
+
+/**
+ * Create a graph for use in internal operations.
+ *
+ * @returns {graph} bbop model graph
+ */
+graph.prototype.create_graph = function(){
+    return new graph();
+};
 
 /**
  * Getter/setter for the graph id.
@@ -900,7 +963,7 @@ graph.prototype.get_singleton_nodes = function(){
  *
  * @param {String} nb_id - the node to consider
  * @param {String} in_pred - (optional) over this predicate, defaults to all
- * @returns {} array of &lt;edge>
+ * @returns {Array} array of &lt;edge>
  */
 graph.prototype.get_parent_edges = function(nb_id, in_pred){
     var anchor = this;
@@ -936,6 +999,49 @@ graph.prototype.get_parent_edges = function(nb_id, in_pred){
 };
 
 /**
+ * Return all child edges; the /originals/. If no predicate is given,
+ * use the default one.
+ * 
+ * TODO: it might be nice to memoize this since others depend on it.
+ *
+ * @param {String} nb_id - the node to consider
+ * @param {String} in_pred - (optional) over this predicate, defaults to all
+ * @returns {Array} array of &lt;edge>
+ */
+graph.prototype.get_child_edges = function(nb_id, in_pred){
+    var anchor = this;
+
+    var results = [];
+
+    // Get all children, or just parents from a specific relation.
+    var preds_to_use = [];
+    if( in_pred ){
+	preds_to_use.push(in_pred);
+    }else{
+	preds_to_use = keys(this._predicates);
+    }
+
+    // Try all of our desired predicates.
+    each(preds_to_use, function(pred){
+
+	// Scan the table for goodies; there really shouldn't be a
+	// lot here.
+	if( anchor._os_table[ nb_id ] ){		
+	    each(keys(anchor._os_table[nb_id] ), function(sub_id){
+		// If it looks like something is there, try to see
+		// if there is an edge for our current pred.
+		var tmp_edge = anchor.get_edge(sub_id, nb_id, pred);
+		if( tmp_edge ){
+		    results.push( tmp_edge );
+		}
+	    });
+	}
+    });
+
+    return results;
+};
+
+/**
  * Return all parent nodes; the /originals/. If no predicate is given,
  * use the default one.
  * 
@@ -955,7 +1061,7 @@ graph.prototype.get_parent_nodes = function(nb_id, in_pred){
 	var obj_id = edge.object_id();
 	var tmp_node = anchor.get_node(obj_id);
 	if( tmp_node ){
-	    results.push( anchor.get_node(obj_id) );
+	    results.push( tmp_node );
 	}
     });
 
@@ -974,122 +1080,157 @@ graph.prototype.get_child_nodes = function(nb_id, in_pred){
     var anchor = this;
 
     var results = [];
-
-    // Get all children, or just children from a specific relation.
-    var preds_to_use = [];
-    if( in_pred ){
-	preds_to_use.push(in_pred);
-    }else{
-	preds_to_use = keys(anchor._predicates);
-    }
-
-    // Try all of our desired predicates.
-    each(preds_to_use, function(pred){
-
-	// Scan the table for goodies; there really shouldn't be a
-	// lot here.
-	if( anchor._os_table[ nb_id ] ){		
-	    each(keys(anchor._os_table[nb_id]), function(sub_id){
-		// If it looks like something is there, try to see
-		// if there is an edge for our current pred.
-		if( anchor.get_edge(sub_id, nb_id, pred) ){
-		    // Make sure that any found edges are in our
-		    // world (not dangling).
-		    var tmp_node = anchor.get_node(sub_id);
-		    if( tmp_node ){
-			results.push( anchor.get_node(sub_id) );
-		    }
-		}
-	    });
+    var edges = this.get_child_edges(nb_id, in_pred);
+    each(edges, function(edge){
+	// Make sure that any found edges are in our
+	// world.
+	var sub_id = edge.subject_id();
+	var tmp_node = anchor.get_node(sub_id);
+	if( tmp_node ){
+	    results.push( tmp_node );
 	}
     });
-
+    
     return results;
 };
 
 /**
- * Return new ancestors subgraph. Single id or id list as first
- * argument. Predicate string/id as optional second.
+ * Return a list with two nested lists, the first is a list of nodes,
+ * the second is a list of edges.
  *
- * @param {string|list} nb_id_or_list - the node id(s) to consider
- * @param {string} pid - (optional) over this predicate
- * @returns {graph} new bbop model graph
+ * The argument function takes a node id and 0 or 1 predicates,
+ * returns a list of edges from the node in question.
+ *
+ * @param {Function} walking_fun - function as described above
+ * @param {String|Array} nb_id_or_list - the node id(s) to consider
+ * @param {String} pid - (optional) over this predicate
+ * @returns {Array} as described above
  */
-graph.prototype.get_ancestor_subgraph = function(nb_id_or_list, pid){
-
+graph.prototype.walker = function(walking_fun, nb_id_or_list, pid){
+    var anchor = this;
+    
     // Shared data structure to trim multiple paths.
     // Nodes: color to get through the graph quickly and w/o cycles.
     var seen_node_hash = {};
     // Edges: just listed--hashing would be essentially the same
     // as a call to graph.add_edge (I think--benchmark?).
     var seen_edge_list = [];
-    var anchor = this;
 
     // Define recursive ascent.
-    function rec_up(nid){
+    function rec_walk(nid){
 
-	//print('rec_up on: ' + nid);
+	//console.log('rec_walk on: ' + nid);
 
     	var results = [];
-    	var new_parent_edges = anchor.get_parent_edges(nid, pid);
+    	//var new_parent_edges = anchor.get_parent_edges(nid, pid);
+    	var new_area_edges = walking_fun.call(anchor, nid, pid);
 
 	// Capture edge list for later adding.
-	each(new_parent_edges, function(e){
+	each(new_area_edges, function(e){
 	    seen_edge_list.push(e);
 	});
 
 	// Pull extant nodes from edges. NOTE: This is a retread of
 	// what happens in get_parent_nodes to avoid another call to
 	// get_parent_edges (as all this is now implemented).
-	var new_parents = [];
-	each(new_parent_edges, function(edge){
+	var new_area_nodes = [];
+	each(new_area_edges, function(edge){
 	    // Make sure that any found edges are in our world.
 	    var obj_id = edge.object_id();
 	    var temp_node = anchor.get_node(obj_id);
 	    if( temp_node ){
-		new_parents.push( temp_node );
+		new_area_nodes.push( temp_node );
 	    }
 	});
 
 	// Make sure we're in there too.
 	var tmp_node = anchor.get_node(nid);
 	if( tmp_node ){
-	    new_parents.push( tmp_node );
+	    new_area_nodes.push( tmp_node );
 	}
 
 	// Recur on unseen things and mark the current as seen.
-    	if( new_parents.length != 0 ){
-    	    each(new_parents, function(new_anc){
-    		// Only do things we haven't ever seen before.
-    		var new_anc_id = new_anc.id();
-    		if( ! seen_node_hash[ new_anc_id ] ){
-    		    seen_node_hash[ new_anc_id ] = new_anc;
-    		    rec_up(new_anc_id);	
-    		}
-    	    });
-    	}
+    	each(new_area_nodes, function(new_node){
+    	    // Only do things we haven't ever seen before.
+    	    var new_node_id = new_node.id();
+    	    if( ! seen_node_hash[ new_node_id ] ){
+    		seen_node_hash[ new_node_id ] = new_node;
+    		rec_walk(new_node_id);	
+    	    }
+    	});
 
     	return results;
     }
     
     // Recursive call and collect data from search. Make multiple
     // ids possible.
-    //if( nb_id_or_list.length &amp;&amp; nb_id_or_list.index ){
-    if( us.isArray(nb_id_or_list) ){ // verify listy-ness
+    if( us.isArray(nb_id_or_list) ){
 	each(nb_id_or_list, function(item){
-	    rec_up(item);
+	    rec_walk(item);
 	});
     }else{
-    	rec_up(nb_id_or_list);
+    	rec_walk(nb_id_or_list);
     }
     
+    return [
+	us.values(seen_node_hash),
+	seen_edge_list
+    ];
+};
+
+/**
+ * Return new ancestors subgraph. Single id or id list as first
+ * argument. Predicate string/id is optional.
+ *
+ * @param {String|Array} nb_id_or_list - the node id(s) to consider
+ * @param {String} pid - (optional) over this predicate
+ * @returns {graph} new bbop model graph
+ */
+graph.prototype.get_ancestor_subgraph = function(nb_id_or_list, pid){
+
+    var anchor = this;
+
+    var walk_results = 
+	anchor.walker(anchor.get_parent_edges, nb_id_or_list, pid);
+    var walked_nodes = walk_results[0];
+    var walked_edges = walk_results[1];
+    
     // Build new graph using data.
-    var new_graph = new graph();
-    each(keys(seen_node_hash), function(k){
-	new_graph.add_node(seen_node_hash[k]);
+    var new_graph = anchor.create_graph();
+    each(walked_nodes, function(node){
+	new_graph.add_node(node.clone());
     });
-    each(seen_edge_list, function(edge){
-	new_graph.add_edge(edge);
+    each(walked_edges, function(edge){
+	new_graph.add_edge(edge.clone());
+    });
+
+    return new_graph;
+};
+
+/**
+ * Return new descendents subgraph. Single id or id list as first
+ * argument. Predicate string/id is optional.
+ *
+ * @param {String|Array} nb_id_or_list - the node id(s) to consider
+ * @param {String} pid - (optional) over this predicate
+ * @returns {graph} new bbop model graph
+ */
+graph.prototype.get_descendent_subgraph = function(nb_id_or_list, pid){
+
+    var anchor = this;
+
+    var walk_results = 
+	anchor.walker(anchor.get_child_edges, nb_id_or_list, pid);
+    var walked_nodes = walk_results[0];
+    var walked_edges = walk_results[1];
+    
+    // Build new graph using data.
+    var new_graph = anchor.create_graph();
+    each(walked_nodes, function(node){
+	new_graph.add_node(node.clone());
+    });
+    each(walked_edges, function(edge){
+	new_graph.add_edge(edge.clone());
     });
 
     return new_graph;
@@ -1098,9 +1239,6 @@ graph.prototype.get_ancestor_subgraph = function(nb_id_or_list, pid){
 /**
  * Add a graph to the current graph, without sharing any of the merged
  * in graph's structure.
- * 
- * TODO: a work in progress 'type' not currently imported (just as
- * not exported)
  * 
  * @param {graph} - graph
  * @returns {boolean} - true; side-effects: more graph
@@ -1128,12 +1266,15 @@ graph.prototype.merge_in = function(in_graph){
  * Load the graph from the specified JSON object (not string).
  * 
  * TODO: a work in progress 'type' not currently imported (just as
- * not exported)
+ * not exported); actually, a lot not imported.
+ * 
+ * This is meant to be an minimal importer for a minimal
+ * format. Subclasses should use something else.
  * 
  * @param {object} - JSON object
  * @returns {boolean} - true; side-effects: creates the graph internally
  */
-graph.prototype.load_json = function(json_object){
+graph.prototype.load_base_json = function(json_object){
 
     var anchor = this;
 
@@ -1142,7 +1283,7 @@ graph.prototype.load_json = function(json_object){
 	each(json_object.nodes, function(node_raw){
 	    var nid = node_raw.id;
 	    var nlabel = node_raw.lbl;
-	    var n = new node(nid, nlabel);
+	    var n = anchor.create_node(nid, nlabel);
 	    if(node_raw.meta){ n.metadata(node_raw.meta); }
 	    anchor.add_node(n);
 	});
@@ -1151,7 +1292,7 @@ graph.prototype.load_json = function(json_object){
     // Now try to load edges; scrape out what we can.
     if( json_object.edges ){
 	each(json_object.edges, function(edge_raw){
-	    var e = new edge(edge_raw.sub, edge_raw.obj, edge_raw.pred);
+	    var e = anchor.create_edge(edge_raw.sub, edge_raw.obj, edge_raw.pred);
 	    // Copy out meta.
 	    if(edge_raw.meta){ e.metadata(edge_raw.meta); } 
 	    
@@ -1244,7 +1385,7 @@ module.exports = {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 02 2015 15:42:40 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 02 2015 19:30:05 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

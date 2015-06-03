@@ -542,3 +542,24 @@ describe('other edge access', function(){
 		     'n has 1 as object');
     });
 });
+
+describe('clone wars', function(){
+
+    it('edge clones are perfect', function(){
+
+	var e = new model.edge('a', 'b', 'is_a');
+	e.type('foo');
+	e.metadata({'a': 1});
+
+	assert.deepEqual(e.clone(), e, 'clone is dupe');
+    });
+
+    it('node clones are perfect', function(){
+
+	var n = new model.edge('a', 'b');
+	n.type('foo');
+	n.metadata({'a': 1});
+
+	assert.deepEqual(n.clone(), n, 'clone is dupe');
+    });
+});

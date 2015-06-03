@@ -558,7 +558,7 @@ describe('clone wars', function(){
 
     it('node clones are perfect', function(){
 
-	var n = new model.edge('a', 'b');
+	var n = new model.node('a', 'b');
 	n.type('foo');
 	n.metadata({'a': 1});
 

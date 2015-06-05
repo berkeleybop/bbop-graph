@@ -1,31 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: graph.js</title>
+<!doctype html>
+<html>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  <meta name="generator" content="JSDoc 3.3.0">
+  <meta charset="utf-8">
+  <title>Source: graph.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
 </head>
 
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: graph.js</h1>
-
-    
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/** 
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: graph.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>/** 
  * Purpose: Basic edged graph and operations.
  * 
  * NOTE: A model instance may not be the whole graph, just a
@@ -41,10 +45,10 @@
  * @module bbop-graph
  */
 
-var us = require('underscore');
+var us = require(&#x27;underscore&#x27;);
 var each = us.each;
 var keys = us.keys;
-var bbop = require('bbop-core');
+var bbop = require(&#x27;bbop-core&#x27;);
 
 ///
 /// Okay, first off, definitions and prototypes of everything we need
@@ -52,7 +56,7 @@ var bbop = require('bbop-core');
 ///
 
 // Common point for assigning the defaul predicate in here.
-var default_predicate = 'points_at';
+var default_predicate = &#x27;points_at&#x27;;
 
 ///
 /// Node sub-object.
@@ -67,12 +71,12 @@ var default_predicate = 'points_at';
  * @returns {node} new bbop model node
  */
 function node(new_id, new_label){
-    this._is_a = 'bbop-graph.node';
+    this._is_a = &#x27;bbop-graph.node&#x27;;
     this._id = new_id || null;
     this._label = new_label || null;
 
     // Only have a real type if the constructor went properly.
-    this._type = 'node';
+    this._type = &#x27;node&#x27;;
 
     this._metadata = null;
 }
@@ -115,7 +119,7 @@ node.prototype.label = function(value){
  * @returns {any} value
  */
 node.prototype.metadata = function(value){
-    if( typeof(value) !== 'undefined' ){
+    if( typeof(value) !== &#x27;undefined&#x27; ){
 	this._metadata = value;
     }
     return this._metadata;
@@ -151,7 +155,7 @@ node.prototype.clone = function(){
 /**
  * Contructor for a BBOP graph model edge.
  * 
- * If no predicate is given, &lt;default_predicate> is used.
+ * If no predicate is given, &amp;lt;default_predicate&gt; is used.
  * Predicates are currently treated as raw strings.
  * 
  * @constructor
@@ -161,14 +165,14 @@ node.prototype.clone = function(){
  * @returns {edge} bbop model edge
  */
 function edge(subject, object, predicate){
-    this._is_a = 'bbop-graph.edge';
+    this._is_a = &#x27;bbop-graph.edge&#x27;;
 
     if( ! subject || ! object ){
-	throw new Error('incomplete arguments for new edge');
+	throw new Error(&#x27;incomplete arguments for new edge&#x27;);
     }
 
     /**
-     * The predicate we'll use when none other is defined. You can
+     * The predicate we&#x27;ll use when none other is defined. You can
      * probably safely ignore this if all of the edges in your graph are
      * the same.
      *
@@ -177,21 +181,21 @@ function edge(subject, object, predicate){
     this.default_predicate = default_predicate;
 
     // Either a string or a node.
-    if( typeof(subject) == 'string' ){
+    if( typeof(subject) == &#x27;string&#x27; ){
 	this._subject_id = subject;	
-    }else if( subject.id &amp;&amp; typeof(subject.id) === 'function' ){
+    }else if( subject.id &amp;amp;&amp;amp; typeof(subject.id) === &#x27;function&#x27; ){
 	this._subject_id = subject.id();
     }else{
-	throw new Error('cannot parse subject argument for edge');
+	throw new Error(&#x27;cannot parse subject argument for edge&#x27;);
     }
 
     // Either a string or a node.
-    if( typeof(object) == 'string' ){
+    if( typeof(object) == &#x27;string&#x27; ){
 	this._object_id = object;	
-    }else if( object.id &amp;&amp; typeof(object.id) === 'function' ){
+    }else if( object.id &amp;amp;&amp;amp; typeof(object.id) === &#x27;function&#x27; ){
 	this._object_id = object.id();
     }else{
-	throw new Error('cannot parse object argument for edge');
+	throw new Error(&#x27;cannot parse object argument for edge&#x27;);
     }
 
     // Predicate default or incoming.
@@ -201,7 +205,7 @@ function edge(subject, object, predicate){
     }
 
     // Only have a real type if the constructor went properly.
-    this._type = 'edge';
+    this._type = &#x27;edge&#x27;;
 
     //
     this._metadata = null;
@@ -241,7 +245,7 @@ edge.prototype.predicate_id = function(){
  * @returns {} string
  */
 edge.prototype.type = function(value){
-    if( typeof(value) !== 'undefined' ){
+    if( typeof(value) !== &#x27;undefined&#x27; ){
 	this._type = value;
     }
     return this._type;
@@ -256,7 +260,7 @@ edge.prototype.type = function(value){
  * @returns {any} value
  */
 edge.prototype.metadata = function(value){
-    if( typeof(value) !== 'undefined' ){
+    if( typeof(value) !== &#x27;undefined&#x27; ){
 	this._metadata = value;
     }
     return this._metadata;
@@ -300,10 +304,10 @@ edge.prototype.clone = function(){
  * @returns {graph} bbop model graph
  */
 function graph(){
-    this._is_a = 'bbop-graph.graph';
+    this._is_a = &#x27;bbop-graph.graph&#x27;;
 
     /**
-     * The predicate we'll use when none other is defined. You can
+     * The predicate we&#x27;ll use when none other is defined. You can
      * probably safely ignore this if all of the edges in your graph are
      * the same.
      *
@@ -320,8 +324,8 @@ function graph(){
     //function ll(str){ anchor._logger.kvetch(str); }
 
     // For node and edge (hash not possible for edges--only relation,
-    // not "real").
-    this._nodes = {}; // node_id -> node
+    // not &quot;real&quot;).
+    this._nodes = {}; // node_id -&gt; node
     this._edge_list = []; // just an easy access list (hard to pull from sop)
     this._predicates = {}; // reference count
 
@@ -336,7 +340,7 @@ function graph(){
     this._sop_table = {}; // [sub][obj][pred] = edge
 
     // Table structures for quick lookups of node properties.
-    this._is_a_singleton_lookup = {}; // node_id -> true
+    this._is_a_singleton_lookup = {}; // node_id -&gt; true
 }
 
 /**
@@ -384,13 +388,13 @@ graph.prototype.id = function(value){
 /**
  * Add a node to the graph.
  *
- * @param {} node - &lt;node> to add to the graph
+ * @param {} node - &amp;lt;node&gt; to add to the graph
  */
 graph.prototype.add_node = function(node){
 
     // Check for anything funny.
     if( ! node.id() ){
-	throw new Error("no anonymous nodes: " + node.id());
+	throw new Error(&quot;no anonymous nodes: &quot; + node.id());
     }else{
 
 	var nid = node.id();
@@ -400,7 +404,7 @@ graph.prototype.add_node = function(node){
 	
 	// If this does not belong to any relation so far, then it is a
 	// singleton.
-	if( ! this._subjects[ nid ] &amp;&amp; ! this._objects[ nid ] ){
+	if( ! this._subjects[ nid ] &amp;amp;&amp;amp; ! this._objects[ nid ] ){
 	    this._is_a_singleton_lookup[ nid ] = true;
 	}
     }
@@ -462,7 +466,7 @@ graph.prototype.remove_node = function(node_id, clean_p){
 /**
  * Add an edge to the graph.
  *
- * @param {} edge - &lt;edge> to add to the graph
+ * @param {} edge - &amp;lt;edge&gt; to add to the graph
  */
 graph.prototype.add_edge = function(edge){
 
@@ -477,23 +481,23 @@ graph.prototype.add_edge = function(edge){
 	is_new_triple = false;
     }
 
-    // Subject -> object -> refcount.
+    // Subject -&gt; object -&gt; refcount.
     if( ! this._so_table[ sub_id ] ){ this._so_table[ sub_id ] = {}; }
-    if( typeof(this._so_table[ sub_id ][ obj_id ]) === 'undefined' ){
+    if( typeof(this._so_table[ sub_id ][ obj_id ]) === &#x27;undefined&#x27; ){
 	this._so_table[ sub_id ][ obj_id ] = 0;
     }else{
 	this._so_table[ sub_id ][ obj_id ]++;
     }
 
-    // Object -> subject -> refcount.
+    // Object -&gt; subject -&gt; refcount.
     if( ! this._os_table[ obj_id ] ){ this._os_table[ obj_id ] = {}; }
-    if( typeof(this._os_table[ obj_id ][ sub_id ]) === 'undefined' ){
+    if( typeof(this._os_table[ obj_id ][ sub_id ]) === &#x27;undefined&#x27; ){
 	this._os_table[ obj_id ][ sub_id ] = 0;
     }else{
 	this._os_table[ obj_id ][ sub_id ]++;
     }
 
-    // Subject -> object -> predicate -> edge.
+    // Subject -&gt; object -&gt; predicate -&gt; edge.
     if( ! this._sop_table[ sub_id ] ){
 	this._sop_table[ sub_id ] = {}; }
     if( ! this._sop_table[ sub_id ][ obj_id ] ){
@@ -506,7 +510,7 @@ graph.prototype.add_edge = function(edge){
     if( ! this._predicates[ pred_id ] ){
 	this._predicates[ pred_id ] = 1;
     }else{
-	// Only increment if it's a new triple (pred).
+	// Only increment if it&#x27;s a new triple (pred).
 	if( is_new_triple ){ this._predicates[ pred_id ]++; }
     }
 
@@ -514,7 +518,7 @@ graph.prototype.add_edge = function(edge){
     if( ! this._subjects[ sub_id ] ){
 	this._subjects[ sub_id ] = 1;
     }else{
-	// Only increment if it's a new triple (pred).
+	// Only increment if it&#x27;s a new triple (pred).
 	if( is_new_triple ){ this._subjects[ sub_id ]++; }
     }
 
@@ -522,11 +526,11 @@ graph.prototype.add_edge = function(edge){
     if( ! this._objects[ obj_id ] ){
 	this._objects[ obj_id ] = 1; 
     }else{
-	// Only increment if it's a new triple (pred).
+	// Only increment if it&#x27;s a new triple (pred).
 	if( is_new_triple ){ this._objects[ obj_id ]++; }
     }
 
-    // Remove the edge's subject and object from the singleton
+    // Remove the edge&#x27;s subject and object from the singleton
     // table--they are now referenced by something.
     if( this._is_a_singleton_lookup[ sub_id ] ){
 	delete this._is_a_singleton_lookup[ sub_id ]; }
@@ -581,15 +585,15 @@ graph.prototype.remove_edge = function(subject_id, object_id, predicate_id){
 	    this._predicates[ predicate_id ]--;
 	}
 
-	// Remove from SOP. Don't need to do more as SOP is not
+	// Remove from SOP. Don&#x27;t need to do more as SOP is not
 	// probed, just used as a lookup.
 	delete this._sop_table[ subject_id ][ object_id ][ predicate_id ];
 
 	// Remove from edge_list.
 	this._edge_list = us.reject(this._edge_list, function(edge){
 	    var ret = false;
-	    if( edge.subject_id() == subject_id &amp;&amp;
-		edge.object_id() == object_id &amp;&amp;
+	    if( edge.subject_id() == subject_id &amp;amp;&amp;amp;
+		edge.object_id() == object_id &amp;amp;&amp;amp;
 		edge.predicate_id() == predicate_id ){
 		ret = true;
 	    }
@@ -612,13 +616,13 @@ graph.prototype.remove_edge = function(subject_id, object_id, predicate_id){
 	
 	// Do we make any singletons with this removal?
 	// Was the subject singletoned?
-	if( this._nodes[subject_id] &amp;&amp; // can't singleton if not there
-	    ! this._subjects[ subject_id ] &amp;&amp; ! this._objects[ subject_id ] ){
+	if( this._nodes[subject_id] &amp;amp;&amp;amp; // can&#x27;t singleton if not there
+	    ! this._subjects[ subject_id ] &amp;amp;&amp;amp; ! this._objects[ subject_id ] ){
 	    this._is_a_singleton_lookup[ subject_id ] = true;
 	}
 	// Was the object singletoned?
-	if( this._nodes[object_id] &amp;&amp;  // can't singleton if not there
-	    ! this._subjects[ object_id ] &amp;&amp; ! this._objects[ object_id ] ){
+	if( this._nodes[object_id] &amp;amp;&amp;amp;  // can&#x27;t singleton if not there
+	    ! this._subjects[ object_id ] &amp;amp;&amp;amp; ! this._objects[ object_id ] ){
 	    this._is_a_singleton_lookup[ object_id ] = true;
 	}
 
@@ -685,7 +689,7 @@ graph.prototype.all_dangling = function(){
  */
 graph.prototype.is_complete = function(){
     var retval = true;
-    if( this.all_dangling().length > 0 ){
+    if( this.all_dangling().length &gt; 0 ){
 	retval = false;
     }
     return retval;
@@ -694,7 +698,7 @@ graph.prototype.is_complete = function(){
 /**
  * Return a /copy/ of a node by id (not the original) if extant.
  *
- * @param {string} nid - the id of the node we're looking for
+ * @param {string} nid - the id of the node we&#x27;re looking for
  * @returns {node} - copy of bbop model node
  */
 graph.prototype.get_node = function(nid){
@@ -709,9 +713,9 @@ graph.prototype.get_node = function(nid){
 /**
  * Return a /copy/ of an edge by ids (not the original) if extant.
  *
- * @param {string} sub_id - the subject_id of the edge we're looking for
- * @param {string} obj_id - the object_id of the edge we're looking for
- * @param {string} pred - (optional) the predicate of the edge we're looking for
+ * @param {string} sub_id - the subject_id of the edge we&#x27;re looking for
+ * @param {string} obj_id - the object_id of the edge we&#x27;re looking for
+ * @param {string} pred - (optional) the predicate of the edge we&#x27;re looking for
  *
  * @returns {edge} - copy of bbop model edge
  */
@@ -720,8 +724,8 @@ graph.prototype.get_edge = function(sub_id, obj_id, pred){
     if( ! pred ){ pred = this.default_predicate; }
 
     var ret_edge = null;
-    if( this._sop_table[sub_id] &amp;&amp;
-	this._sop_table[sub_id][obj_id] &amp;&amp;
+    if( this._sop_table[sub_id] &amp;amp;&amp;amp;
+	this._sop_table[sub_id][obj_id] &amp;amp;&amp;amp;
 	this._sop_table[sub_id][obj_id][pred] ){
 	    var tmp_edge = this._sop_table[sub_id][obj_id][pred];
 	    ret_edge = tmp_edge.clone();
@@ -733,15 +737,15 @@ graph.prototype.get_edge = function(sub_id, obj_id, pred){
  * Return all edges (copies) of given subject and object ids. Returns
  * entirely new edges.
  *
- * @param {String} sub_id - the subject_id of the edge we're looking for
- * @param {String} obj_id - the object_id of the edge we're looking for
- * @returns {Array} list of &lt;edge>
+ * @param {String} sub_id - the subject_id of the edge we&#x27;re looking for
+ * @param {String} obj_id - the object_id of the edge we&#x27;re looking for
+ * @returns {Array} list of &amp;lt;edge&gt;
  */
 graph.prototype.get_edges = function(sub_id, obj_id){
     var anchor = this;
 
     var retlist = [];
-    if( anchor._sop_table[sub_id] &amp;&amp; anchor._sop_table[sub_id][obj_id] ){
+    if( anchor._sop_table[sub_id] &amp;amp;&amp;amp; anchor._sop_table[sub_id][obj_id] ){
 	each(keys(anchor._sop_table[sub_id][obj_id]), function(pred){
 	    var found_edge = anchor._sop_table[sub_id][obj_id][pred];
 	    var tmp_edge = found_edge.clone();
@@ -756,8 +760,8 @@ graph.prototype.get_edges = function(sub_id, obj_id){
  * Return all edges (copies) of given subject id. Returns entirely new
  * edges.
  *
- * @param {String} sub_id - the subject_id of the edge we're looking for
- * @returns {Array} list of &lt;edge>
+ * @param {String} sub_id - the subject_id of the edge we&#x27;re looking for
+ * @returns {Array} list of &amp;lt;edge&gt;
  */
 graph.prototype.get_edges_by_subject = function(sub_id){
     var anchor = this;
@@ -776,8 +780,8 @@ graph.prototype.get_edges_by_subject = function(sub_id){
  * Return all edges (copies) of given object id. Returns entirely new
  * edges.
  *
- * @param {String} obj_id - the object_id of the edge we're looking for
- * @returns {Array} list of &lt;edge>
+ * @param {String} obj_id - the object_id of the edge we&#x27;re looking for
+ * @returns {Array} list of &amp;lt;edge&gt;
  */
 graph.prototype.get_edges_by_object = function(obj_id){
     var anchor = this;
@@ -795,15 +799,15 @@ graph.prototype.get_edges_by_object = function(obj_id){
 /**
  * Return all predicates of given subject and object ids.
  *
- * @param {string} sub_id - the subject_id of the edge we're looking for
- * @param {string} obj_id - the object_id of the edge we're looking for
+ * @param {string} sub_id - the subject_id of the edge we&#x27;re looking for
+ * @param {string} obj_id - the object_id of the edge we&#x27;re looking for
  * @returns {} list of predicate ids (as strings)
  */
 graph.prototype.get_predicates = function(sub_id, obj_id){
     var anchor = this;
 
     var retlist = [];
-    if( anchor._sop_table[sub_id] &amp;&amp; anchor._sop_table[sub_id][obj_id] ){
+    if( anchor._sop_table[sub_id] &amp;amp;&amp;amp; anchor._sop_table[sub_id][obj_id] ){
 	each(keys(anchor._sop_table[sub_id][obj_id]), function(pred){
 	    retlist.push(pred);
 	});
@@ -815,22 +819,22 @@ graph.prototype.get_predicates = function(sub_id, obj_id){
 
 /**
  * Translate an edge array into extant (node) bodies, switching on
- * either 'subject' or 'object'.
+ * either &#x27;subject&#x27; or &#x27;object&#x27;.
  * 
  * This will return the /original/ nodes.
  *
  * This will throw an error on any world issues that crop up.
  * 
  * @param {} in_edges - the edges we want the subjects or objects of
- * @param {} target - 'subject' or 'object'
- * @returns {} array of &lt;node>
+ * @param {} target - &#x27;subject&#x27; or &#x27;object&#x27;
+ * @returns {} array of &amp;lt;node&gt;
  */
 graph.prototype.edges_to_nodes = function(in_edges, target){
     var anchor = this;
     
     // Double check.
-    if( target != 'subject' &amp;&amp; target != 'object'){
-	throw new Error('Bad target for edges to bodies.');
+    if( target != &#x27;subject&#x27; &amp;amp;&amp;amp; target != &#x27;object&#x27;){
+	throw new Error(&#x27;Bad target for edges to bodies.&#x27;);
     }
 
     // 
@@ -839,17 +843,17 @@ graph.prototype.edges_to_nodes = function(in_edges, target){
 
 	// Switch between subject and object.
 	var target_id = null;
-	if( target == 'subject' ){
+	if( target == &#x27;subject&#x27; ){
 	    target_id = in_e.subject_id();
 	}else{
 	    target_id = in_e.object_id();
 	}
 	
 	//
-	if( target_id &amp;&amp; anchor._nodes[ target_id ] ){
+	if( target_id &amp;amp;&amp;amp; anchor._nodes[ target_id ] ){
 	    results.push(anchor._nodes[ target_id ]);
 	}else{
-	    throw new Error(target + ' world issue');
+	    throw new Error(target + &#x27; world issue&#x27;);
 	}
     });
 
@@ -865,7 +869,7 @@ graph.prototype.edges_to_nodes = function(in_edges, target){
  */
 graph.prototype.is_root_node = function(nb_id){
     var result = false;	
-    if( this._nodes[ nb_id ] &amp;&amp; ! this._subjects[ nb_id ] ){	    
+    if( this._nodes[ nb_id ] &amp;amp;&amp;amp; ! this._subjects[ nb_id ] ){	    
 	result = true;
     }
     return result;
@@ -878,7 +882,7 @@ graph.prototype.is_root_node = function(nb_id){
  * BUG/TODO: Could I speed this up by my moving some of the
  * calculation into the add_node and add_edge methods? O(|#nodes|)
  * 
- * @returns {} array of &lt;node>
+ * @returns {} array of &amp;lt;node&gt;
  */
 graph.prototype.get_root_nodes = function(){
     var anchor = this;
@@ -904,7 +908,7 @@ graph.prototype.get_root_nodes = function(){
 graph.prototype.is_leaf_node = function(nb_id){
 
     var result = false;
-    if( this._nodes[ nb_id ] &amp;&amp; ! this._objects[ nb_id ] ){	    
+    if( this._nodes[ nb_id ] &amp;amp;&amp;amp; ! this._objects[ nb_id ] ){	    
 	result = true;
     }
     return result;
@@ -916,7 +920,7 @@ graph.prototype.is_leaf_node = function(nb_id){
  * BUG/TODO: Could I speed this up by my moving some of the
  * calculation into the add_node and add_edge methods? O(|#nodes|)
  * 
- * @returns {} array of &lt;node>
+ * @returns {} array of &amp;lt;node&gt;
  */
 graph.prototype.get_leaf_nodes = function(){
     var anchor = this;
@@ -937,7 +941,7 @@ graph.prototype.get_leaf_nodes = function(){
  * 
  * Throws an error if there is a world issue.
  *
- * @returns {} array of &lt;node>
+ * @returns {} array of &amp;lt;node&gt;
  */
 graph.prototype.get_singleton_nodes = function(){
     var anchor = this;
@@ -948,7 +952,7 @@ graph.prototype.get_singleton_nodes = function(){
 	if( anchor._nodes[ singleton_id ] ){
 	    singleton_array.push( anchor._nodes[ singleton_id ] );
 	}else{
-	    throw new Error("world issue in get_singletons: " + singleton_id);
+	    throw new Error(&quot;world issue in get_singletons: &quot; + singleton_id);
 	}
     });
 
@@ -963,7 +967,7 @@ graph.prototype.get_singleton_nodes = function(){
  *
  * @param {String} nb_id - the node to consider
  * @param {String} in_pred - (optional) over this predicate, defaults to all
- * @returns {Array} array of &lt;edge>
+ * @returns {Array} array of &amp;lt;edge&gt;
  */
 graph.prototype.get_parent_edges = function(nb_id, in_pred){
     var anchor = this;
@@ -981,7 +985,7 @@ graph.prototype.get_parent_edges = function(nb_id, in_pred){
     // Try all of our desired predicates.
     each(preds_to_use, function(pred){
 
-	// Scan the table for goodies; there really shouldn't be a
+	// Scan the table for goodies; there really shouldn&#x27;t be a
 	// lot here.
 	if( anchor._so_table[ nb_id ] ){		
 	    each(keys(anchor._so_table[nb_id] ), function(obj_id){
@@ -1006,7 +1010,7 @@ graph.prototype.get_parent_edges = function(nb_id, in_pred){
  *
  * @param {String} nb_id - the node to consider
  * @param {String} in_pred - (optional) over this predicate, defaults to all
- * @returns {Array} array of &lt;edge>
+ * @returns {Array} array of &amp;lt;edge&gt;
  */
 graph.prototype.get_child_edges = function(nb_id, in_pred){
     var anchor = this;
@@ -1024,7 +1028,7 @@ graph.prototype.get_child_edges = function(nb_id, in_pred){
     // Try all of our desired predicates.
     each(preds_to_use, function(pred){
 
-	// Scan the table for goodies; there really shouldn't be a
+	// Scan the table for goodies; there really shouldn&#x27;t be a
 	// lot here.
 	if( anchor._os_table[ nb_id ] ){		
 	    each(keys(anchor._os_table[nb_id] ), function(sub_id){
@@ -1048,7 +1052,7 @@ graph.prototype.get_child_edges = function(nb_id, in_pred){
  * @param {String} nb_id - the node to consider
  * @param {String} in_pred - (optional) over this predicate, defaults to all
  *
- * @returns {} array of &lt;node>
+ * @returns {} array of &amp;lt;node&gt;
  */
 graph.prototype.get_parent_nodes = function(nb_id, in_pred){
     var anchor = this;
@@ -1074,7 +1078,7 @@ graph.prototype.get_parent_nodes = function(nb_id, in_pred){
  * 
  * @param {String} nb_id - the node to consider
  * @param {String} in_pred - (optional) over this predicate, defaults to all
- * @returns {} array of &lt;node>
+ * @returns {} array of &amp;lt;node&gt;
  */
 graph.prototype.get_child_nodes = function(nb_id, in_pred){
     var anchor = this;
@@ -1119,7 +1123,7 @@ graph.prototype.walker = function(walking_fun, nb_id_or_list, pid){
     // Define recursive ascent.
     function rec_walk(nid){
 
-	//console.log('rec_walk on: ' + nid);
+	//console.log(&#x27;rec_walk on: &#x27; + nid);
 
     	var results = [];
     	//var new_parent_edges = anchor.get_parent_edges(nid, pid);
@@ -1143,7 +1147,7 @@ graph.prototype.walker = function(walking_fun, nb_id_or_list, pid){
 	    }
 	});
 
-	// Make sure we're in there too.
+	// Make sure we&#x27;re in there too.
 	var tmp_node = anchor.get_node(nid);
 	if( tmp_node ){
 	    new_area_nodes.push( tmp_node );
@@ -1151,7 +1155,7 @@ graph.prototype.walker = function(walking_fun, nb_id_or_list, pid){
 
 	// Recur on unseen things and mark the current as seen.
     	each(new_area_nodes, function(new_node){
-    	    // Only do things we haven't ever seen before.
+    	    // Only do things we haven&#x27;t ever seen before.
     	    var new_node_id = new_node.id();
     	    if( ! seen_node_hash[ new_node_id ] ){
     		seen_node_hash[ new_node_id ] = new_node;
@@ -1238,7 +1242,7 @@ graph.prototype.get_descendent_subgraph = function(nb_id_or_list, pid){
 
 /**
  * Add a graph to the current graph, without sharing any of the merged
- * in graph's structure.
+ * in graph&#x27;s structure.
  * 
  * @param {graph} - graph
  * @returns {boolean} - true; side-effects: more graph
@@ -1265,7 +1269,7 @@ graph.prototype.merge_in = function(in_graph){
 /**
  * Load the graph from the specified JSON object (not string).
  * 
- * TODO: a work in progress 'type' not currently imported (just as
+ * TODO: a work in progress &#x27;type&#x27; not currently imported (just as
  * not exported); actually, a lot not imported.
  * 
  * This is meant to be an minimal importer for a minimal
@@ -1306,7 +1310,7 @@ graph.prototype.load_base_json = function(json_object){
 /**
  * Dump out the graph into a JSON-able object.
  * 
- * TODO: a work in progress; 'type' not currently exported (just as
+ * TODO: a work in progress; &#x27;type&#x27; not currently exported (just as
  * not imported)
  * 
  * @returns {object} - an object that can be converted to a JSON string by dumping.
@@ -1323,16 +1327,16 @@ graph.prototype.to_json = function(){
 	var ncopy = {};
 	
 	var nid = node.id();
-	if(nid){ ncopy['id'] = nid; }
+	if(nid){ ncopy[&#x27;id&#x27;] = nid; }
 	
 	// var nt = node.type();
-	// if(nt){ ncopy['type'] = nt; }
+	// if(nt){ ncopy[&#x27;type&#x27;] = nt; }
 	
 	var nlabel = node.label();
-	if(nlabel){ ncopy['lbl'] = nlabel; }
+	if(nlabel){ ncopy[&#x27;lbl&#x27;] = nlabel; }
 	
 	var nmeta = node.metadata();
-	if(nmeta){ ncopy['meta'] = nmeta; }
+	if(nmeta){ ncopy[&#x27;meta&#x27;] = nmeta; }
 	
 	nset.push(ncopy);
     });
@@ -1343,19 +1347,19 @@ graph.prototype.to_json = function(){
 	var ecopy = {};
 	
 	var s = node.subject_id();
-	if(s){ ecopy['sub'] = s; }
+	if(s){ ecopy[&#x27;sub&#x27;] = s; }
 	
 	var o = node.object_id();
-	if(o){ ecopy['obj'] = o; }
+	if(o){ ecopy[&#x27;obj&#x27;] = o; }
 	
 	var p = node.predicate_id();
-	if(p){ ecopy['pred'] = p; }
+	if(p){ ecopy[&#x27;pred&#x27;] = p; }
 	
 	eset.push(ecopy);
     });
     
     // New exportable.
-    var ret_obj = {'nodes': nset, 'edges': eset};
+    var ret_obj = {&#x27;nodes&#x27;: nset, &#x27;edges&#x27;: eset};
     
     return ret_obj;
 };
@@ -1370,25 +1374,26 @@ module.exports = {
 
 };
 </code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-bbop-graph.html">bbop-graph</a></li></ul><h3>Classes</h3><ul><li><a href="module-bbop-graph-edge.html">edge</a></li><li><a href="module-bbop-graph-graph.html">graph</a></li><li><a href="module-bbop-graph-node.html">node</a></li></ul>
-</nav>
-
-<br clear="both">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 02 2015 19:30:05 GMT-0700 (PDT)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on June 5, 2015.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
 </body>
+
 </html>

@@ -1,4974 +1,1516 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Class: graph</title>
+<!doctype html>
+<html>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+<head>
+  <meta name="generator" content="JSDoc 3.3.0">
+  <meta charset="utf-8">
+  <title>Class: graph</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
 </head>
 
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Class: graph</h1>
-
-    
-
-
-
-<section>
-
-<header>
-    <h2>
-        <span class="ancestors"><a href="module-bbop-graph.html">bbop-graph</a>~</span>
-    
-    graph
-    </h2>
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-
-    
-        
-<dt>
-    <h4 class="name" id="graph"><span class="type-signature"></span>new graph<span class="signature">()</span><span class="type-signature"> &rarr; {graph}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Contructor for a BBOP graph model graph.
-
-TODO: make compilation piecewise with every added node and edge.
+<body onload="prettyPrint()">
+  <nav id="jsdoc-navbar" role="navigation" class="jsdoc-navbar">
+    <div id="jsdoc-navbar-container">
+      <div id="jsdoc-navbar-content">
+        <a href="index.html" class="jsdoc-navbar-package-name">Home</a>
+      </div>
     </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line275">line 275</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    bbop model graph
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">graph</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-    
+  </nav>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-inner">inner</span></div><small><a href="module-bbop-graph.html">bbop-graph</a>~<wbr></small><span class="symbol-name">graph</span></h1>
+            <p class="source-link">Source: <a href="graph.js.html#source-line-275">graph.<wbr>js:275</a></p>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Property</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-bbop-graph-graph.html#default_predicate">default_predicate</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-bbop-graph-graph.html#add_edge">add_edge(edge)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#add_node">add_node(node)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#all_dangling">all_dangling()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#all_edges">all_edges()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#all_nodes">all_nodes()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#all_predicates">all_predicates()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#create_edge">create_edge(subject, object, predicate)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#create_graph">create_graph()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#create_node">create_node(new_id, new_label)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#edges_to_nodes">edges_to_nodes(in_edges, target)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_ancestor_subgraph">get_ancestor_subgraph(nb_id_or_list, pid)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_child_edges">get_child_edges(nb_id, in_pred)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-bbop-graph-graph.html#get_child_nodes">get_child_nodes(nb_id, in_pred)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_descendent_subgraph">get_descendent_subgraph(nb_id_or_list, pid)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_edge">get_edge(sub_id, obj_id, pred)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_edges">get_edges(sub_id, obj_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_edges_by_object">get_edges_by_object(obj_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_edges_by_subject">get_edges_by_subject(sub_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_leaf_nodes">get_leaf_nodes()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_node">get_node(nid)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_parent_edges">get_parent_edges(nb_id, in_pred)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_parent_nodes">get_parent_nodes(nb_id, in_pred)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_predicates">get_predicates(sub_id, obj_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_root_nodes">get_root_nodes()</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="module-bbop-graph-graph.html#get_singleton_nodes">get_singleton_nodes()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#id">id(value)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#is_complete">is_complete()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#is_leaf_node">is_leaf_node(nb_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#is_root_node">is_root_node(nb_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#load_base_json">load_base_json(json_object)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#merge_in">merge_in(in_graph)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#remove_edge">remove_edge(subject_id, object_id, predicate_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#remove_node">remove_node(node_id, clean_p)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#to_json">to_json()</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#walker">walker(walking_fun, nb_id_or_list, pid)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="graph">new&nbsp;<span class="symbol-name">graph</span><span class="signature"><span class="signature-params">()</span></span></h2>
+            <p>Contructor for a BBOP graph model graph.</p>
+            <p>TODO: make compilation piecewise with every added node and edge.</p>
+            <dl class="dl-compact">
+              <dt>Returns</dt>
+              <dd>
+                <p><code>graph</code>&nbsp;bbop model graph</p>
+              </dd>
+            </dl>
+          </section>
+          <section>
+            <h2>Property</h2>
+            <section>
+              <h3 id="default_predicate"><span class="symbol-name">default_predicate</span></h3>
+              <p>The predicate we'll use when none other is defined. You can probably safely ignore this if all of the edges in your graph are the same.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="add_edge"><span class="symbol-name">add_edge</span><span class="signature"><span class="signature-params">(edge)</span></span></h3>
+              <p>Add an edge to the graph.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>edge</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>
+                          <edge> to add to the graph</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="add_node"><span class="symbol-name">add_node</span><span class="signature"><span class="signature-params">(node)</span></span></h3>
+              <p>Add a node to the graph.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>node</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>
+                          <node> to add to the graph</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+              <h3 id="all_dangling"><span class="symbol-name">all_dangling</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>List all external nodes by referenced id.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of extrnal nodes by id</p>
+                </dd>
+              </dl>
+              <h3 id="all_edges"><span class="symbol-name">all_edges</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Returns an /original/ list of all added edges.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of edges</p>
+                </dd>
+              </dl>
+              <h3 id="all_nodes"><span class="symbol-name">all_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Returns an /original/ list of all added nodes.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of nodes</p>
+                </dd>
+              </dl>
+              <h3 id="all_predicates"><span class="symbol-name">all_predicates</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Returns an /original/ list of all added predicates.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of predicates (strings)</p>
+                </dd>
+              </dl>
+              <h3 id="create_edge"><span class="symbol-name">create_edge</span><span class="signature"><span class="signature-params">(subject, object, predicate)</span>&nbsp;&rarr; <span class="signature-returns"> edge</span></span></h3>
+              <p>Create an edge for use in internal operations.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>subject</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>node id string or node</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>node id string or node</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>predicate</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) a user-friendly description of the node</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>edge</code>&nbsp;bbop model edge</p>
+                </dd>
+              </dl>
+              <h3 id="create_graph"><span class="symbol-name">create_graph</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> graph</span></span></h3>
+              <p>Create a graph for use in internal operations.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>graph</code>&nbsp;bbop model graph</p>
+                </dd>
+              </dl>
+              <h3 id="create_node"><span class="symbol-name">create_node</span><span class="signature"><span class="signature-params">(new_id, new_label)</span>&nbsp;&rarr; <span class="signature-returns"> node</span></span></h3>
+              <p>Create a node for use in internal operations.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>new_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>a unique id for the node</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>new_label</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) a user-friendly description of the node</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>node</code>&nbsp;new bbop model node</p>
+                </dd>
+              </dl>
+              <h3 id="edges_to_nodes"><span class="symbol-name">edges_to_nodes</span><span class="signature"><span class="signature-params">(in_edges, target)</span></span></h3>
+              <p>Translate an edge array into extant (node) bodies, switching on either 'subject' or 'object'.</p>
+              <p>This will return the /original/ nodes.</p>
+              <p>This will throw an error on any world issues that crop up.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>in_edges</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the edges we want the subjects or objects of</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>target</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>'subject' or 'object'</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of
+                    <node>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_ancestor_subgraph"><span class="symbol-name">get_ancestor_subgraph</span><span class="signature"><span class="signature-params">(nb_id_or_list, pid)</span>&nbsp;&rarr; <span class="signature-returns"> graph</span></span></h3>
+              <p>Return new ancestors subgraph. Single id or id list as first argument. Predicate string/id is optional.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id_or_list</p>
+                      </td>
+                      <td>
+                        <p>(String or Array)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node id(s) to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>pid</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>graph</code>&nbsp;new bbop model graph</p>
+                </dd>
+              </dl>
+              <h3 id="get_child_edges"><span class="symbol-name">get_child_edges</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
+              <p>Return all child edges; the /originals/. If no predicate is given, use the default one.</p>
+              <p>TODO: it might be nice to memoize this since others depend on it.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>in_pred</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate, defaults to all</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array</code>&nbsp;array of
+                    <edge>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_child_nodes"><span class="symbol-name">get_child_nodes</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span></span></h3>
+              <p>Return all child nodes; the /originals/. If no predicate is given, use the default one.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>in_pred</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate, defaults to all</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of
+                    <node>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_descendent_subgraph"><span class="symbol-name">get_descendent_subgraph</span><span class="signature"><span class="signature-params">(nb_id_or_list, pid)</span>&nbsp;&rarr; <span class="signature-returns"> graph</span></span></h3>
+              <p>Return new descendents subgraph. Single id or id list as first argument. Predicate string/id is optional.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id_or_list</p>
+                      </td>
+                      <td>
+                        <p>(String or Array)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node id(s) to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>pid</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>graph</code>&nbsp;new bbop model graph</p>
+                </dd>
+              </dl>
+              <h3 id="get_edge"><span class="symbol-name">get_edge</span><span class="signature"><span class="signature-params">(sub_id, obj_id, pred)</span>&nbsp;&rarr; <span class="signature-returns"> edge</span></span></h3>
+              <p>Return a /copy/ of an edge by ids (not the original) if extant.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>sub_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the subject_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>obj_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the object_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>pred</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) the predicate of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>edge</code>&nbsp;- copy of bbop model edge</p>
+                </dd>
+              </dl>
+              <h3 id="get_edges"><span class="symbol-name">get_edges</span><span class="signature"><span class="signature-params">(sub_id, obj_id)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
+              <p>Return all edges (copies) of given subject and object ids. Returns entirely new edges.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>sub_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the subject_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>obj_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the object_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array</code>&nbsp;list of
+                    <edge>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_edges_by_object"><span class="symbol-name">get_edges_by_object</span><span class="signature"><span class="signature-params">(obj_id)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
+              <p>Return all edges (copies) of given object id. Returns entirely new edges.
+              </p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>obj_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the object_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array</code>&nbsp;list of
+                    <edge>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_edges_by_subject"><span class="symbol-name">get_edges_by_subject</span><span class="signature"><span class="signature-params">(sub_id)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
+              <p>Return all edges (copies) of given subject id. Returns entirely new edges.
+              </p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>sub_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the subject_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array</code>&nbsp;list of
+                    <edge>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_leaf_nodes"><span class="symbol-name">get_leaf_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Return a list of /copies/ of the leaf nodes.</p>
+              <p>BUG/TODO: Could I speed this up by my moving some of the calculation into the add_node and add_edge methods? O(|#nodes|)</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of
+                    <node>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_node"><span class="symbol-name">get_node</span><span class="signature"><span class="signature-params">(nid)</span>&nbsp;&rarr; <span class="signature-returns"> node</span></span></h3>
+              <p>Return a /copy/ of a node by id (not the original) if extant.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nid</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the id of the node we're looking for</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>node</code>&nbsp;- copy of bbop model node</p>
+                </dd>
+              </dl>
+              <h3 id="get_parent_edges"><span class="symbol-name">get_parent_edges</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
+              <p>Return all parent edges; the /originals/. If no predicate is given, use the default one.</p>
+              <p>TODO: it might be nice to memoize this since others depend on it.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>in_pred</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate, defaults to all</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array</code>&nbsp;array of
+                    <edge>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_parent_nodes"><span class="symbol-name">get_parent_nodes</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span></span></h3>
+              <p>Return all parent nodes; the /originals/. If no predicate is given, use the default one.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>in_pred</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate, defaults to all</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of
+                    <node>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_predicates"><span class="symbol-name">get_predicates</span><span class="signature"><span class="signature-params">(sub_id, obj_id)</span></span></h3>
+              <p>Return all predicates of given subject and object ids.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>sub_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the subject_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>obj_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the object_id of the edge we're looking for</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>list of predicate ids (as strings)</p>
+                </dd>
+              </dl>
+              <h3 id="get_root_nodes"><span class="symbol-name">get_root_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Return a list of /copies/ of the root nodes.</p>
+              <p>BUG/TODO: Could I speed this up by my moving some of the calculation into the add_node and add_edge methods? O(|#nodes|)</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of
+                    <node>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="get_singleton_nodes"><span class="symbol-name">get_singleton_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Find nodes that are roots and leaves over all relations. This returns the /original/ node.</p>
+              <p>Throws an error if there is a world issue.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>array of
+                    <node>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="id"><span class="symbol-name">id</span><span class="signature"><span class="signature-params">(value)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
+              <p>Getter/setter for the graph id.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>value</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) new value for this property to take</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>string</code>&nbsp;string</p>
+                </dd>
+              </dl>
+              <h3 id="is_complete"><span class="symbol-name">is_complete</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <p>Any bad parts in graph? Essentially, make sure that there are no weird references and nothing is dangling.</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p>boolean</p>
+                </dd>
+              </dl>
+              <h3 id="is_leaf_node"><span class="symbol-name">is_leaf_node</span><span class="signature"><span class="signature-params">(nb_id)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Leaves are defined as nodes who are the object of nothing, independent of predicate.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>id of the node to check</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;- boolean</p>
+                </dd>
+              </dl>
+              <h3 id="is_root_node"><span class="symbol-name">is_root_node</span><span class="signature"><span class="signature-params">(nb_id)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Roots are defined as nodes who are the subject of nothing, independent of predicate.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>nb_id</p>
+                      </td>
+                      <td>
+                        <p>string</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>id of the node to check</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;- boolean</p>
+                </dd>
+              </dl>
+              <h3 id="load_base_json"><span class="symbol-name">load_base_json</span><span class="signature"><span class="signature-params">(json_object)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Load the graph from the specified JSON object (not string).</p>
+              <p>TODO: a work in progress 'type' not currently imported (just as not exported); actually, a lot not imported.</p>
+              <p>This is meant to be an minimal importer for a minimal format. Subclasses should use something else.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>json_object</p>
+                      </td>
+                      <td>
+                        <p>object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>JSON object</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;- true; side-effects: creates the graph internally</p>
+                </dd>
+              </dl>
+              <h3 id="merge_in"><span class="symbol-name">merge_in</span><span class="signature"><span class="signature-params">(in_graph)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
+              <p>Add a graph to the current graph, without sharing any of the merged in graph's structure.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>in_graph</p>
+                      </td>
+                      <td>
+                        <p>graph</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>graph</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>boolean</code>&nbsp;- true; side-effects: more graph</p>
+                </dd>
+              </dl>
+              <h3 id="remove_edge"><span class="symbol-name">remove_edge</span><span class="signature"><span class="signature-params">(subject_id, object_id, predicate_id)</span>&nbsp;&rarr; <span class="signature-returns"> Boolean</span></span></h3>
+              <p>Remove an edge to the graph. The edge as referenced.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>subject_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>subject by ID</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>object_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>object by ID</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>predicate_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(Optional) predicate ID or default</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Boolean</code>&nbsp;true if such an edge was found and deleted, false otherwise</p>
+                </dd>
+              </dl>
+              <h3 id="remove_node"><span class="symbol-name">remove_node</span><span class="signature"><span class="signature-params">(node_id, clean_p)</span>&nbsp;&rarr; <span class="signature-returns"> Boolean</span></span></h3>
+              <p>Remove a node from the graph.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>node_id</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the id for a node</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>clean_p</p>
+                      </td>
+                      <td>
+                        <p>Boolean</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) remove all edges connects to node (default false)</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Boolean</code>&nbsp;true if node found and destroyed</p>
+                </dd>
+              </dl>
+              <h3 id="to_json"><span class="symbol-name">to_json</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> object</span></span></h3>
+              <p>Dump out the graph into a JSON-able object.</p>
+              <p>TODO: a work in progress; 'type' not currently exported (just as not imported)</p>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>object</code>&nbsp;- an object that can be converted to a JSON string by dumping.</p>
+                </dd>
+              </dl>
+              <h3 id="walker"><span class="symbol-name">walker</span><span class="signature"><span class="signature-params">(walking_fun, nb_id_or_list, pid)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
+              <p>Return a list with two nested lists, the first is a list of nodes, the second is a list of edges.</p>
+              <p>The argument function takes a node id and 0 or 1 predicates, returns a list of edges from the node in question.</p>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>walking_fun</p>
+                      </td>
+                      <td>
+                        <p>function()</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>function as described above</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>nb_id_or_list</p>
+                      </td>
+                      <td>
+                        <p>(String or Array)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the node id(s) to consider</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>pid</p>
+                      </td>
+                      <td>
+                        <p>String</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>(optional) over this predicate</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Array</code>&nbsp;as described above</p>
+                </dd>
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
     </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="default_predicate"><span class="type-signature"></span>default_predicate<span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The predicate we'll use when none other is defined. You can
-probably safely ignore this if all of the edges in your graph are
-the same.
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on June 5, 2015.
+      </p>
     </div>
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line285">line 285</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-</dd>
-
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<dt>
-    <h4 class="name" id="add_edge"><span class="type-signature"></span>add_edge<span class="signature">(edge)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Add an edge to the graph.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>edge</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><edge> to add to the graph</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line440">line 440</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="add_node"><span class="type-signature"></span>add_node<span class="signature">(node)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Add a node to the graph.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>node</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><node> to add to the graph</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line362">line 362</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="all_dangling"><span class="type-signature"></span>all_dangling<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        List all external nodes by referenced id.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line637">line 637</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of extrnal nodes by id
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="all_edges"><span class="type-signature"></span>all_edges<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Returns an /original/ list of all added edges.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line619">line 619</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of edges
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="all_nodes"><span class="type-signature"></span>all_nodes<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Returns an /original/ list of all added nodes.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line610">line 610</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of nodes
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="all_predicates"><span class="type-signature"></span>all_predicates<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Returns an /original/ list of all added predicates.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line628">line 628</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of predicates (strings)
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="create_edge"><span class="type-signature"></span>create_edge<span class="signature">(subject, object, predicate)</span><span class="type-signature"> &rarr; {edge}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Create an edge for use in internal operations.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>subject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">node id string or node</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>object</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">node id string or node</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>predicate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) a user-friendly description of the node</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line323">line 323</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    bbop model edge
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">edge</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="create_graph"><span class="type-signature"></span>create_graph<span class="signature">()</span><span class="type-signature"> &rarr; {graph}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Create a graph for use in internal operations.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line343">line 343</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    bbop model graph
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">graph</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="create_node"><span class="type-signature"></span>create_node<span class="signature">(new_id, new_label)</span><span class="type-signature"> &rarr; {node}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Create a node for use in internal operations.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>new_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">a unique id for the node</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>new_label</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) a user-friendly description of the node</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line334">line 334</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    new bbop model node
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">node</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="edges_to_nodes"><span class="type-signature"></span>edges_to_nodes<span class="signature">(in_edges, target)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Translate an edge array into extant (node) bodies, switching on
-either 'subject' or 'object'.
-
-This will return the /original/ nodes.
-
-This will throw an error on any world issues that crop up.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>in_edges</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the edges we want the subjects or objects of</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>target</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">'subject' or 'object'</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line801">line 801</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <node>
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_ancestor_subgraph"><span class="type-signature"></span>get_ancestor_subgraph<span class="signature">(nb_id_or_list, pid)</span><span class="type-signature"> &rarr; {graph}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return new ancestors subgraph. Single id or id list as first
-argument. Predicate string/id is optional.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id_or_list</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node id(s) to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1162">line 1162</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    new bbop model graph
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">graph</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_child_edges"><span class="type-signature"></span>get_child_edges<span class="signature">(nb_id, in_pred)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all child edges; the /originals/. If no predicate is given,
-use the default one.
-
-TODO: it might be nice to memoize this since others depend on it.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>in_pred</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate, defaults to all</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line984">line 984</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <edge>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_child_nodes"><span class="type-signature"></span>get_child_nodes<span class="signature">(nb_id, in_pred)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all child nodes; the /originals/. If no predicate is given,
-use the default one.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>in_pred</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate, defaults to all</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1052">line 1052</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <node>
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_descendent_subgraph"><span class="type-signature"></span>get_descendent_subgraph<span class="signature">(nb_id_or_list, pid)</span><span class="type-signature"> &rarr; {graph}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return new descendents subgraph. Single id or id list as first
-argument. Predicate string/id is optional.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id_or_list</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node id(s) to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1191">line 1191</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    new bbop model graph
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">graph</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_edge"><span class="type-signature"></span>get_edge<span class="signature">(sub_id, obj_id, pred)</span><span class="type-signature"> &rarr; {edge}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return a /copy/ of an edge by ids (not the original) if extant.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>sub_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the subject_id of the edge we're looking for</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>obj_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the object_id of the edge we're looking for</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pred</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) the predicate of the edge we're looking for</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line691">line 691</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - copy of bbop model edge
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">edge</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_edges"><span class="type-signature"></span>get_edges<span class="signature">(sub_id, obj_id)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all edges (copies) of given subject and object ids. Returns
-entirely new edges.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>sub_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the subject_id of the edge we're looking for</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>obj_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the object_id of the edge we're looking for</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line713">line 713</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    list of <edge>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_edges_by_object"><span class="type-signature"></span>get_edges_by_object<span class="signature">(obj_id)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all edges (copies) of given object id. Returns entirely new
-edges.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the object_id of the edge we're looking for</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line755">line 755</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    list of <edge>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_edges_by_subject"><span class="type-signature"></span>get_edges_by_subject<span class="signature">(sub_id)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all edges (copies) of given subject id. Returns entirely new
-edges.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>sub_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the subject_id of the edge we're looking for</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line735">line 735</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    list of <edge>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_leaf_nodes"><span class="type-signature"></span>get_leaf_nodes<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return a list of /copies/ of the leaf nodes.
-
-BUG/TODO: Could I speed this up by my moving some of the
-calculation into the add_node and add_edge methods? O(|#nodes|)
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line894">line 894</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <node>
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_node"><span class="type-signature"></span>get_node<span class="signature">(nid)</span><span class="type-signature"> &rarr; {node}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return a /copy/ of a node by id (not the original) if extant.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the id of the node we're looking for</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line673">line 673</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - copy of bbop model node
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">node</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_parent_edges"><span class="type-signature"></span>get_parent_edges<span class="signature">(nb_id, in_pred)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all parent edges; the /originals/. If no predicate is given,
-use the default one.
-
-TODO: it might be nice to memoize this since others depend on it.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>in_pred</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate, defaults to all</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line941">line 941</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <edge>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_parent_nodes"><span class="type-signature"></span>get_parent_nodes<span class="signature">(nb_id, in_pred)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all parent nodes; the /originals/. If no predicate is given,
-use the default one.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>in_pred</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate, defaults to all</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1026">line 1026</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <node>
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_predicates"><span class="type-signature"></span>get_predicates<span class="signature">(sub_id, obj_id)</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return all predicates of given subject and object ids.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>sub_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the subject_id of the edge we're looking for</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>obj_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the object_id of the edge we're looking for</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line775">line 775</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    list of predicate ids (as strings)
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_root_nodes"><span class="type-signature"></span>get_root_nodes<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return a list of /copies/ of the root nodes.
-
-BUG/TODO: Could I speed this up by my moving some of the
-calculation into the add_node and add_edge methods? O(|#nodes|)
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line856">line 856</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <node>
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="get_singleton_nodes"><span class="type-signature"></span>get_singleton_nodes<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Find nodes that are roots and leaves over all relations. This
-returns the /original/ node.
-
-Throws an error if there is a world issue.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line915">line 915</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    array of <node>
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="id"><span class="type-signature"></span>id<span class="signature">(value)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Getter/setter for the graph id.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) new value for this property to take</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line353">line 353</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    string
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="is_complete"><span class="type-signature"></span>is_complete<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Any bad parts in graph? Essentially, make sure that there are no
-weird references and nothing is dangling.
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line659">line 659</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    boolean
-</div>
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="is_leaf_node"><span class="type-signature"></span>is_leaf_node<span class="signature">(nb_id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Leaves are defined as nodes who are the object of nothing,
-independent of predicate.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">id of the node to check</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line877">line 877</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - boolean
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="is_root_node"><span class="type-signature"></span>is_root_node<span class="signature">(nb_id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Roots are defined as nodes who are the subject of nothing,
-independent of predicate.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">id of the node to check</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line839">line 839</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - boolean
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="load_base_json"><span class="type-signature"></span>load_base_json<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Load the graph from the specified JSON object (not string).
-
-TODO: a work in progress 'type' not currently imported (just as
-not exported); actually, a lot not imported.
-
-This is meant to be an minimal importer for a minimal
-format. Subclasses should use something else.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">JSON object</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1250">line 1250</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - true; side-effects: creates the graph internally
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="merge_in"><span class="type-signature"></span>merge_in<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Add a graph to the current graph, without sharing any of the merged
-in graph's structure.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">graph</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">graph</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1219">line 1219</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - true; side-effects: more graph
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="remove_edge"><span class="type-signature"></span>remove_edge<span class="signature">(subject_id, object_id, predicate_id)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Remove an edge to the graph.
-The edge as referenced.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>subject_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">subject by ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>object_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">object by ID</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>predicate_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(Optional) predicate ID or default</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line522">line 522</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    true if such an edge was found and deleted, false otherwise
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="remove_node"><span class="type-signature"></span>remove_node<span class="signature">(node_id, clean_p)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Remove a node from the graph.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>node_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the id for a node</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>clean_p</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) remove all edges connects to node (default false)</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line389">line 389</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    true if node found and destroyed
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="to_json"><span class="type-signature"></span>to_json<span class="signature">()</span><span class="type-signature"> &rarr; {object}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Dump out the graph into a JSON-able object.
-
-TODO: a work in progress; 'type' not currently exported (just as
-not imported)
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1287">line 1287</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    - an object that can be converted to a JSON string by dumping.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="walker"><span class="type-signature"></span>walker<span class="signature">(walking_fun, nb_id_or_list, pid)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Return a list with two nested lists, the first is a list of nodes,
-the second is a list of edges.
-
-The argument function takes a node id and 0 or 1 predicates,
-returns a list of edges from the node in question.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>walking_fun</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">function as described above</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>nb_id_or_list</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the node id(s) to consider</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>pid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">(optional) over this predicate</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="graph.js.html">graph.js</a>, <a href="graph.js.html#line1082">line 1082</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    as described above
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-bbop-graph.html">bbop-graph</a></li></ul><h3>Classes</h3><ul><li><a href="module-bbop-graph-edge.html">edge</a></li><li><a href="module-bbop-graph-graph.html">graph</a></li><li><a href="module-bbop-graph-node.html">node</a></li></ul>
-</nav>
-
-<br clear="both">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jun 02 2015 19:30:05 GMT-0700 (PDT)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
 </body>
+
 </html>

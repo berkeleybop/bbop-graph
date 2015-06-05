@@ -55,7 +55,7 @@ var bbop = require(&#x27;bbop-core&#x27;);
 /// to work.
 ///
 
-// Common point for assigning the defaul predicate in here.
+// Common point for assigning the default predicate in here.
 var default_predicate = &#x27;points_at&#x27;;
 
 ///
@@ -68,7 +68,7 @@ var default_predicate = &#x27;points_at&#x27;;
  * @constructor
  * @param {string} new_id - a unique id for the node
  * @param {string} new_label - (optional) a user-friendly description of the node
- * @returns {node} new bbop model node
+ * @returns {this} new bbop model node
  */
 function node(new_id, new_label){
     this._is_a = &#x27;bbop-graph.node&#x27;;
@@ -880,7 +880,7 @@ graph.prototype.is_root_node = function(nb_id){
  * Return a list of /copies/ of the root nodes.
  * 
  * BUG/TODO: Could I speed this up by my moving some of the
- * calculation into the add_node and add_edge methods? O(|#nodes|)
+ * calculation into the add_node and add_edge methods? O(|num(nodes)|)
  * 
  * @returns {} array of &amp;lt;node&gt;
  */
@@ -918,7 +918,7 @@ graph.prototype.is_leaf_node = function(nb_id){
  * Return a list of /copies/ of the leaf nodes.
  * 
  * BUG/TODO: Could I speed this up by my moving some of the
- * calculation into the add_node and add_edge methods? O(|#nodes|)
+ * calculation into the add_node and add_edge methods? O(|num(nodes)|)
  * 
  * @returns {} array of &amp;lt;node&gt;
  */

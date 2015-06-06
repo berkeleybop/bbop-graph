@@ -209,14 +209,13 @@
                         <p>edge</p>
                       </td>
                       <td>
-                        <p>&nbsp;</p>
+                        <p>edge</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>
-                          <edge> to add to the graph</p>
+                        <p>edge to add to the graph</p>
                       </td>
                     </tr>
                   </tbody>
@@ -243,14 +242,13 @@
                         <p>node</p>
                       </td>
                       <td>
-                        <p>&nbsp;</p>
+                        <p>node</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>
-                          <node> to add to the graph</p>
+                        <p>node to add to the graph</p>
                       </td>
                     </tr>
                   </tbody>
@@ -258,36 +256,36 @@
               </section>
               <dl class="dl-compact">
               </dl>
-              <h3 id="all_dangling"><span class="symbol-name">all_dangling</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="all_dangling"><span class="symbol-name">all_dangling</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>List all external nodes by referenced id.</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of extrnal nodes by id</p>
+                  <p><code>Array</code>&nbsp;array of strings: external nodes by id</p>
                 </dd>
               </dl>
-              <h3 id="all_edges"><span class="symbol-name">all_edges</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="all_edges"><span class="symbol-name">all_edges</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Returns an /original/ list of all added edges.</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of edges</p>
+                  <p><code>Array</code>&nbsp;array of {edge}</p>
                 </dd>
               </dl>
-              <h3 id="all_nodes"><span class="symbol-name">all_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="all_nodes"><span class="symbol-name">all_nodes</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Returns an /original/ list of all added nodes.</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of nodes</p>
+                  <p><code>Array</code>&nbsp;array of {node}</p>
                 </dd>
               </dl>
-              <h3 id="all_predicates"><span class="symbol-name">all_predicates</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="all_predicates"><span class="symbol-name">all_predicates</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Returns an /original/ list of all added predicates.</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of predicates (strings)</p>
+                  <p><code>Array</code>&nbsp;array of predicates (strings)</p>
                 </dd>
               </dl>
               <h3 id="create_edge"><span class="symbol-name">create_edge</span><span class="signature"><span class="signature-params">(subject, object, predicate)</span>&nbsp;&rarr; <span class="signature-returns"> edge</span></span></h3>
@@ -414,7 +412,7 @@
                   <p><code>node</code>&nbsp;new bbop model node</p>
                 </dd>
               </dl>
-              <h3 id="edges_to_nodes"><span class="symbol-name">edges_to_nodes</span><span class="signature"><span class="signature-params">(in_edges, target)</span></span></h3>
+              <h3 id="edges_to_nodes"><span class="symbol-name">edges_to_nodes</span><span class="signature"><span class="signature-params">(in_edges, target)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Translate an edge array into extant (node) bodies, switching on either 'subject' or 'object'.</p>
               <p>This will return the /original/ nodes.</p>
               <p>This will throw an error on any world issues that crop up.</p>
@@ -435,13 +433,13 @@
                         <p>in_edges</p>
                       </td>
                       <td>
-                        <p>&nbsp;</p>
+                        <p>Array</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
                       </td>
                       <td>
-                        <p>the edges we want the subjects or objects of</p>
+                        <p>list if {edge} we want the subjects or objects of</p>
                       </td>
                     </tr>
                     <tr>
@@ -449,7 +447,7 @@
                         <p>target</p>
                       </td>
                       <td>
-                        <p>&nbsp;</p>
+                        <p>String</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
@@ -464,9 +462,7 @@
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of
-                    <node>
-                  </p>
+                  <p><code>Array</code>&nbsp;list of {node}</p>
                 </dd>
               </dl>
               <h3 id="get_ancestor_subgraph"><span class="symbol-name">get_ancestor_subgraph</span><span class="signature"><span class="signature-params">(nb_id_or_list, pid)</span>&nbsp;&rarr; <span class="signature-returns"> graph</span></span></h3>
@@ -574,7 +570,7 @@
                   </p>
                 </dd>
               </dl>
-              <h3 id="get_child_nodes"><span class="symbol-name">get_child_nodes</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span></span></h3>
+              <h3 id="get_child_nodes"><span class="symbol-name">get_child_nodes</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Return all child nodes; the /originals/. If no predicate is given, use the default one.</p>
               <section>
                 <h4>Parameters</h4>
@@ -622,9 +618,7 @@
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of
-                    <node>
-                  </p>
+                  <p><code>Array</code>&nbsp;list of {node}</p>
                 </dd>
               </dl>
               <h3 id="get_descendent_subgraph"><span class="symbol-name">get_descendent_subgraph</span><span class="signature"><span class="signature-params">(nb_id_or_list, pid)</span>&nbsp;&rarr; <span class="signature-returns"> graph</span></span></h3>
@@ -876,15 +870,13 @@
                   </p>
                 </dd>
               </dl>
-              <h3 id="get_leaf_nodes"><span class="symbol-name">get_leaf_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="get_leaf_nodes"><span class="symbol-name">get_leaf_nodes</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Return a list of /copies/ of the leaf nodes.</p>
               <p>BUG/TODO: Could I speed this up by my moving some of the calculation into the add_node and add_edge methods? O(|num(nodes)|)</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of
-                    <node>
-                  </p>
+                  <p><code>Array</code>&nbsp;list of {node}</p>
                 </dd>
               </dl>
               <h3 id="get_node"><span class="symbol-name">get_node</span><span class="signature"><span class="signature-params">(nid)</span>&nbsp;&rarr; <span class="signature-returns"> node</span></span></h3>
@@ -978,7 +970,7 @@
                   </p>
                 </dd>
               </dl>
-              <h3 id="get_parent_nodes"><span class="symbol-name">get_parent_nodes</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span></span></h3>
+              <h3 id="get_parent_nodes"><span class="symbol-name">get_parent_nodes</span><span class="signature"><span class="signature-params">(nb_id, in_pred)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Return all parent nodes; the /originals/. If no predicate is given, use the default one.</p>
               <section>
                 <h4>Parameters</h4>
@@ -1026,12 +1018,10 @@
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of
-                    <node>
-                  </p>
+                  <p><code>Array</code>&nbsp;list of {node}</p>
                 </dd>
               </dl>
-              <h3 id="get_predicates"><span class="symbol-name">get_predicates</span><span class="signature"><span class="signature-params">(sub_id, obj_id)</span></span></h3>
+              <h3 id="get_predicates"><span class="symbol-name">get_predicates</span><span class="signature"><span class="signature-params">(sub_id, obj_id)</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Return all predicates of given subject and object ids.</p>
               <section>
                 <h4>Parameters</h4>
@@ -1050,7 +1040,7 @@
                         <p>sub_id</p>
                       </td>
                       <td>
-                        <p>string</p>
+                        <p>String</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
@@ -1064,7 +1054,7 @@
                         <p>obj_id</p>
                       </td>
                       <td>
-                        <p>string</p>
+                        <p>String</p>
                       </td>
                       <td>
                         <p>&nbsp;</p>
@@ -1079,29 +1069,25 @@
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>list of predicate ids (as strings)</p>
+                  <p><code>Array</code>&nbsp;list of predicate ids (as strings)</p>
                 </dd>
               </dl>
-              <h3 id="get_root_nodes"><span class="symbol-name">get_root_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="get_root_nodes"><span class="symbol-name">get_root_nodes</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Return a list of /copies/ of the root nodes.</p>
               <p>BUG/TODO: Could I speed this up by my moving some of the calculation into the add_node and add_edge methods? O(|num(nodes)|)</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of
-                    <node>
-                  </p>
+                  <p><code>Array</code>&nbsp;list of {node}</p>
                 </dd>
               </dl>
-              <h3 id="get_singleton_nodes"><span class="symbol-name">get_singleton_nodes</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="get_singleton_nodes"><span class="symbol-name">get_singleton_nodes</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Array</span></span></h3>
               <p>Find nodes that are roots and leaves over all relations. This returns the /original/ node.</p>
               <p>Throws an error if there is a world issue.</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>array of
-                    <node>
-                  </p>
+                  <p><code>Array</code>&nbsp;array of {node}</p>
                 </dd>
               </dl>
               <h3 id="id"><span class="symbol-name">id</span><span class="signature"><span class="signature-params">(value)</span>&nbsp;&rarr; <span class="signature-returns"> string</span></span></h3>
@@ -1141,12 +1127,12 @@
                   <p><code>string</code>&nbsp;string</p>
                 </dd>
               </dl>
-              <h3 id="is_complete"><span class="symbol-name">is_complete</span><span class="signature"><span class="signature-params">()</span></span></h3>
+              <h3 id="is_complete"><span class="symbol-name">is_complete</span><span class="signature"><span class="signature-params">()</span>&nbsp;&rarr; <span class="signature-returns"> Boolean</span></span></h3>
               <p>Any bad parts in graph? Essentially, make sure that there are no weird references and nothing is dangling.</p>
               <dl class="dl-compact">
                 <dt>Returns</dt>
                 <dd>
-                  <p>boolean</p>
+                  <p><code>Boolean</code>&nbsp;boolean</p>
                 </dd>
               </dl>
               <h3 id="is_leaf_node"><span class="symbol-name">is_leaf_node</span><span class="signature"><span class="signature-params">(nb_id)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>

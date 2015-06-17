@@ -564,4 +564,36 @@ describe('clone wars', function(){
 
 	assert.deepEqual(n.clone(), n, 'clone is dupe');
     });
+
+    it('graph clones are perfect', function(){
+
+	var n1 = new model.node('a', 'Albl');
+	n1.type('foo');
+	n1.metadata({'a': 1});
+
+	var n2 = new model.node('b', 'Blbl');
+	n2.type('bar');
+	n2.metadata({'b': 1});
+
+	var e = new model.edge('a', 'b', 'is_a');
+	e.type('bib');
+	e.metadata({'c': 1});
+
+	var g = new model.graph();
+	g.id('gid');
+	g.default_predicate = 'pred';
+	g.add_node(n1);
+	g.add_node(n2);
+	g.add_edge(e);
+
+	var g_clone = g.clone();
+
+	//console.log(g);
+	//console.log(g_clone);
+
+	assert.equal(g.id(), g_clone.id(), 'clone has same id');
+	assert.equal(g.default_predicate, g_clone.default_predicate, 'clone has same pred');
+	assert.deepEqual(g.all_nodes(), g_clone.all_nodes(), 'clone has dupe nodes');
+	assert.deepEqual(g.all_edges(), g_clone.all_edges(), 'clone has dupe edges');
+    });
 });

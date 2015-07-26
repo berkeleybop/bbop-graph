@@ -562,6 +562,8 @@ describe('clone wars', function(){
 	n.type('foo');
 	n.metadata({'a': 1});
 
+	var clone = n.clone();
+	assert.deepEqual(clone.id(), n.id(), 'clone sounds the same');
 	assert.deepEqual(n.clone(), n, 'clone is dupe');
     });
 
@@ -595,5 +597,62 @@ describe('clone wars', function(){
 	assert.equal(g.default_predicate, g_clone.default_predicate, 'clone has same pred');
 	assert.deepEqual(g.all_nodes(), g_clone.all_nodes(), 'clone has dupe nodes');
 	assert.deepEqual(g.all_edges(), g_clone.all_edges(), 'clone has dupe edges');
+    });
+});
+
+describe("does graph comparison work?", function(){
+
+    it('identity', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+
+	assert.isTrue(a.is_topologically_equal(a), "ident: a is same as a");
+    });
+
+    it('same loaded graph', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+	var b = _make_set_graph();
+
+	assert.isTrue(a.is_topologically_equal(b), "loaded: a is same as b");
+	assert.isTrue(b.is_topologically_equal(a), "loaded: b is same as a");
+    });
+
+    it('empty versus empty', function(){
+
+	// Setup.
+	var a = new model.graph();
+	var b = new model.graph();
+
+	assert.isTrue(a.is_topologically_equal(b), "empty: a is same as b");
+	assert.isTrue(b.is_topologically_equal(a), "empty: b is same as a");
+    });
+
+    it('loaded graph versus empty', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+	var b = new model.graph();
+
+	assert.isFalse(a.is_topologically_equal(b), "l/e: a is not same as b");
+	assert.isFalse(b.is_topologically_equal(a), "l/e: b is not same as a");
+    });
+
+    it('manipulate graph', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+	var b = a.clone();
+
+	// Clones are the same.
+	assert.isTrue(a.is_topologically_equal(b), "man: a is same as b");
+
+	// Eliminate a node.
+	b.remove_node('a');
+
+	// Should no longer be the same.
+	assert.isFalse(a.is_topologically_equal(b), "man: a is now not same as b");
     });
 });

@@ -4,7 +4,7 @@
 
 var chai = require('chai');
 chai.config.includeStack = true;
-assert = chai.assert;
+var assert = chai.assert;
 var model = new require('..');
 
 ///
@@ -388,8 +388,8 @@ describe('removal functions work as expected', function(){
 	assert.equal(g.all_edges().length, 5, 'now five edges');
 	assert.equal(g.all_predicates().length, 1, 'one pred in graph');
 	assert.equal(g.get_singleton_nodes().length, 2, 'z and n single');
-	assert.equal(g.get_child_nodes('n').length, 0, 'n now no kids')
-	assert.equal(g.get_parent_nodes('d').length, 1, 'd now no parent')
+	assert.equal(g.get_child_nodes('n').length, 0, 'n now no kids');
+	assert.equal(g.get_parent_nodes('d').length, 1, 'd now no parent');
 
 	// Look at dangling.
 	assert.equal(g.all_dangling().length, 1, 'just one dangle');
@@ -467,7 +467,7 @@ describe('removal functions work as expected', function(){
 	assert.isTrue(g.remove_node('a', true), 'goodbye a');
 	assert.isTrue(g.remove_node('n', true), 'goodbye n');
 	assert.isTrue(g.remove_node('x', true), 'goodbye x');
-	assert.isTrue(g.remove_node('z', true), 'goodbye z')
+	assert.isTrue(g.remove_node('z', true), 'goodbye z');
 	assert.isTrue(g.remove_node('b', true), 'goodbye b');
 	assert.isTrue(g.remove_node('c', true), 'goodbye c');
 	assert.isTrue(g.remove_node('e', true), 'goodbye e');
@@ -503,7 +503,7 @@ describe('removal functions work as expected', function(){
 	assert.isTrue(g.remove_node('a'), 'goodbye a');
 	assert.isTrue(g.remove_node('n'), 'goodbye n');
 	assert.isTrue(g.remove_node('x'), 'goodbye x');
-	assert.isTrue(g.remove_node('z'), 'goodbye z')
+	assert.isTrue(g.remove_node('z'), 'goodbye z');
 	assert.isTrue(g.remove_node('b'), 'goodbye b');
 	assert.isTrue(g.remove_node('c'), 'goodbye c');
 	assert.isTrue(g.remove_node('e'), 'goodbye e');
@@ -562,6 +562,8 @@ describe('clone wars', function(){
 	n.type('foo');
 	n.metadata({'a': 1});
 
+	var clone = n.clone();
+	assert.deepEqual(clone.id(), n.id(), 'clone sounds the same');
 	assert.deepEqual(n.clone(), n, 'clone is dupe');
     });
 
@@ -595,5 +597,62 @@ describe('clone wars', function(){
 	assert.equal(g.default_predicate, g_clone.default_predicate, 'clone has same pred');
 	assert.deepEqual(g.all_nodes(), g_clone.all_nodes(), 'clone has dupe nodes');
 	assert.deepEqual(g.all_edges(), g_clone.all_edges(), 'clone has dupe edges');
+    });
+});
+
+describe("does graph comparison work?", function(){
+
+    it('identity', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+
+	assert.isTrue(a.is_topologically_equal(a), "ident: a is same as a");
+    });
+
+    it('same loaded graph', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+	var b = _make_set_graph();
+
+	assert.isTrue(a.is_topologically_equal(b), "loaded: a is same as b");
+	assert.isTrue(b.is_topologically_equal(a), "loaded: b is same as a");
+    });
+
+    it('empty versus empty', function(){
+
+	// Setup.
+	var a = new model.graph();
+	var b = new model.graph();
+
+	assert.isTrue(a.is_topologically_equal(b), "empty: a is same as b");
+	assert.isTrue(b.is_topologically_equal(a), "empty: b is same as a");
+    });
+
+    it('loaded graph versus empty', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+	var b = new model.graph();
+
+	assert.isFalse(a.is_topologically_equal(b), "l/e: a is not same as b");
+	assert.isFalse(b.is_topologically_equal(a), "l/e: b is not same as a");
+    });
+
+    it('manipulate graph', function(){
+
+	// Setup.
+	var a = _make_set_graph();
+	var b = a.clone();
+
+	// Clones are the same.
+	assert.isTrue(a.is_topologically_equal(b), "man: a is same as b");
+
+	// Eliminate a node.
+	b.remove_node('a');
+
+	// Should no longer be the same.
+	assert.isFalse(a.is_topologically_equal(b), "man: a is now not same as b");
     });
 });

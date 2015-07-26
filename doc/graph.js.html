@@ -88,7 +88,8 @@ function node(new_id, new_label){
  * @returns {string} string
  */
 node.prototype.id = function(value){
-    if(value) this._id = value; return this._id;
+    if(value){ this._id = value; }
+    return this._id;
 };
 
 /**
@@ -98,7 +99,8 @@ node.prototype.id = function(value){
  * @returns {string} string
  */
 node.prototype.type = function(value){
-    if(value) this._type = value; return this._type; };
+    if(value){ this._type = value; }
+    return this._type; };
 
 /**
  * Getter/setter for node label.
@@ -107,7 +109,8 @@ node.prototype.type = function(value){
  * @returns {string} string
  */
 node.prototype.label = function(value){
-    if(value) this._label = value; return this._label;
+    if(value){ this._label = value; }
+    return this._label;
  };
 
 /**
@@ -127,20 +130,24 @@ node.prototype.metadata = function(value){
 
 /**
  * Get a fresh new copy of the current node (using bbop.clone for
- * metadata object).
+ * metadata object). This includes copying the ID--you&#x27;d have to
+ * change it on your own.
  *
  * @returns {node} node
  */
 node.prototype.clone = function(){
 
     // Base.
-    var new_clone = new node(this.id());
+    var new_clone = new node();
 
-    // Type.
-    new_clone.type(this.type());
+    // ID.
+    new_clone.id(this.id());
 
     // Label.
     new_clone.label(this.label());
+
+    // Type.
+    new_clone.type(this.type());
 
     // Meta.
     new_clone.metadata(bbop.clone(this.metadata()));
@@ -157,6 +164,8 @@ node.prototype.clone = function(){
  * 
  * If no predicate is given, &amp;lt;default_predicate&gt; is used.
  * Predicates are currently treated as raw strings.
+ * 
+ * Note that these edges have no ID associated with them.
  * 
  * @constructor
  * @param {string} subject - node id string or node
@@ -181,7 +190,7 @@ function edge(subject, object, predicate){
     this.default_predicate = default_predicate;
 
     // Either a string or a node.
-    if( typeof(subject) == &#x27;string&#x27; ){
+    if( typeof(subject) === &#x27;string&#x27; ){
 	this._subject_id = subject;	
     }else if( subject.id &amp;amp;&amp;amp; typeof(subject.id) === &#x27;function&#x27; ){
 	this._subject_id = subject.id();
@@ -190,7 +199,7 @@ function edge(subject, object, predicate){
     }
 
     // Either a string or a node.
-    if( typeof(object) == &#x27;string&#x27; ){
+    if( typeof(object) === &#x27;string&#x27; ){
 	this._object_id = object;	
     }else if( object.id &amp;amp;&amp;amp; typeof(object.id) === &#x27;function&#x27; ){
 	this._object_id = object.id();
@@ -409,7 +418,8 @@ graph.prototype.clone = function(){
  * @returns {string} string
  */
 graph.prototype.id = function(value){
-    if( value ) this._id = value; return this._id;
+    if( value ){ this._id = value; }
+    return this._id;
 };
 
 /**
@@ -503,7 +513,7 @@ graph.prototype.add_edge = function(edge){
     var pred_id = edge.predicate_id();
 
     // First, attempt to remove the edge.
-    var is_new_triple = true
+    var is_new_triple = true;
     if( this.remove_edge(sub_id, obj_id, pred_id) ){
 	is_new_triple = false;
     }
@@ -590,7 +600,7 @@ graph.prototype.remove_edge = function(subject_id, object_id, predicate_id){
 
 	// Does this subject appear elsewhere? Decrement or eliminate
 	// as necessary.
-	if( this._subjects[ subject_id ] == 1 ){
+	if( this._subjects[ subject_id ] === 1 ){
 	    delete this._subjects[ subject_id ];
 	}else{
 	    this._subjects[ subject_id ]--;
@@ -598,7 +608,7 @@ graph.prototype.remove_edge = function(subject_id, object_id, predicate_id){
 
 	// Does this object appear elsewhere? Decrement or eliminate
 	// as necessary.
-	if( this._objects[ object_id ] == 1 ){
+	if( this._objects[ object_id ] === 1 ){
 	    delete this._objects[ object_id ];
 	}else{
 	    this._objects[ object_id ]--;
@@ -606,7 +616,7 @@ graph.prototype.remove_edge = function(subject_id, object_id, predicate_id){
 
 	// Does this predicate appear elsewhere? Decrement or
 	// eliminate as necessary.
-	if( this._predicates[ predicate_id ] == 1 ){
+	if( this._predicates[ predicate_id ] === 1 ){
 	    delete this._predicates[ predicate_id ];
 	}else{
 	    this._predicates[ predicate_id ]--;
@@ -619,26 +629,26 @@ graph.prototype.remove_edge = function(subject_id, object_id, predicate_id){
 	// Remove from edge_list.
 	this._edge_list = us.reject(this._edge_list, function(edge){
 	    var ret = false;
-	    if( edge.subject_id() == subject_id &amp;amp;&amp;amp;
-		edge.object_id() == object_id &amp;amp;&amp;amp;
-		edge.predicate_id() == predicate_id ){
+	    if( edge.subject_id() === subject_id &amp;amp;&amp;amp;
+		edge.object_id() === object_id &amp;amp;&amp;amp;
+		edge.predicate_id() === predicate_id ){
 		ret = true;
 	    }
 	    return ret;
 	});
 
 	// SO rels decrement or eliminate.
-	if( this._so_table[ subject_id ][ object_id ] == 1 ){
+	if( this._so_table[ subject_id ][ object_id ] === 1 ){
 	    delete this._so_table[ subject_id ][ object_id ];
 	}else{
-	    this._so_table[ subject_id ][ object_id ]--
+	    this._so_table[ subject_id ][ object_id ]--;
 	}
 	
 	// OS rels decrement or eliminate.
-	if( this._os_table[ object_id ][ subject_id ] == 1 ){
+	if( this._os_table[ object_id ][ subject_id ] === 1 ){
 	    delete this._os_table[ object_id ][ subject_id ];
 	}else{
-	    this._os_table[ object_id ][ subject_id ]--
+	    this._os_table[ object_id ][ subject_id ]--;
 	}
 	
 	// Do we make any singletons with this removal?
@@ -860,7 +870,7 @@ graph.prototype.edges_to_nodes = function(in_edges, target){
     var anchor = this;
     
     // Double check.
-    if( target != &#x27;subject&#x27; &amp;amp;&amp;amp; target != &#x27;object&#x27;){
+    if( target !== &#x27;subject&#x27; &amp;amp;&amp;amp; target !== &#x27;object&#x27;){
 	throw new Error(&#x27;Bad target for edges to bodies.&#x27;);
     }
 
@@ -870,7 +880,7 @@ graph.prototype.edges_to_nodes = function(in_edges, target){
 
 	// Switch between subject and object.
 	var target_id = null;
-	if( target == &#x27;subject&#x27; ){
+	if( target === &#x27;subject&#x27; ){
 	    target_id = in_e.subject_id();
 	}else{
 	    target_id = in_e.object_id();
@@ -1268,6 +1278,61 @@ graph.prototype.get_descendent_subgraph = function(nb_id_or_list, pid){
 };
 
 /**
+ * True or false on whether or not a graph shares the same structure
+ * as the current graph. This means that the (top-level) nodes have
+ * the same IDs and every edge connects in the same way.
+ *
+ * This does not compare things like meta information, etc.
+ * 
+ * BUG/TODO: This should probably be moved to the superclass. Would
+ * have an easier time optimizing in there too.
+ * 
+ * @param {graph} comp_graph graph to compare against
+ * @returns {Boolean} well is it?
+ */
+graph.prototype.is_topologically_equal = function(comp_graph){
+    var anchor = this;
+    var ret = false;
+
+    /// We&#x27;re going to use a lot of short-ciruits to get out of the
+    /// comparison as quickly as possible.
+
+    var base_nodes = anchor.all_nodes();
+    var base_edges = anchor.all_edges();
+    var comp_nodes = comp_graph.all_nodes();
+    var comp_edges = comp_graph.all_edges();
+    if( base_nodes.length === comp_nodes.length &amp;amp;&amp;amp;
+	base_edges.length === comp_edges.length ){
+
+	    // Cycle over edges first, as they should be more
+	    // characteristic.
+	    each(base_edges, function(base_edge){
+		var edge_p = comp_graph.get_edge(base_edge.subject_id(),
+						 base_edge.object_id(),
+						 base_edge.predicate_id());
+		if( ! edge_p ){
+		    return false; // failure to find edge - done
+		}
+	    });
+
+	    // Cycle over nodes next.
+	    each(base_nodes, function(base_node){
+		var base_node_id = base_node.id();
+		var node_p = comp_graph.get_node(base_node_id);
+		if( ! node_p ){
+		    return false; // failure to find edge - done
+		}
+	    });
+
+	    // We got through the gauntlet, I guess we&#x27;re good to go
+	    // now.
+	    ret = true;
+	}
+    
+    return ret;
+};
+
+/**
  * Add a graph to the current graph, without sharing any of the merged
  * in graph&#x27;s structure.
  * 
@@ -1410,7 +1475,7 @@ module.exports = {
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on June 16, 2015.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on July 25, 2015.
       </p>
     </div>
   </footer>

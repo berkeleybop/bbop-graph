@@ -25,7 +25,7 @@
         <div id="jsdoc-main" role="main">
           <header class="page-header">
             <h1><div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-inner">inner</span></div><small><a href="module-bbop-graph.html">bbop-graph</a>~<wbr></small><span class="symbol-name">graph</span></h1>
-            <p class="source-link">Source: <a href="graph.js.html#source-line-275">graph.<wbr>js:275</a></p>
+            <p class="source-link">Source: <a href="graph.js.html#source-line-284">graph.<wbr>js:284</a></p>
             <dl class="dl-compact">
             </dl>
           </header>
@@ -87,13 +87,13 @@
                     <dt><a href="module-bbop-graph-graph.html#get_ancestor_subgraph">get_ancestor_subgraph(nb_id_or_list, pid)</a></dt>
                     <dd>
                     </dd>
+                    <dt><a href="module-bbop-graph-graph.html#get_child_edges">get_child_edges(nb_id, in_pred)</a></dt>
+                    <dd>
+                    </dd>
                   </dl>
                 </div>
                 <div class="summary-column">
                   <dl class="dl-summary-callout">
-                    <dt><a href="module-bbop-graph-graph.html#get_child_edges">get_child_edges(nb_id, in_pred)</a></dt>
-                    <dd>
-                    </dd>
                     <dt><a href="module-bbop-graph-graph.html#get_child_nodes">get_child_nodes(nb_id, in_pred)</a></dt>
                     <dd>
                     </dd>
@@ -127,16 +127,16 @@
                     <dt><a href="module-bbop-graph-graph.html#get_predicates">get_predicates(sub_id, obj_id)</a></dt>
                     <dd>
                     </dd>
-                  </dl>
-                </div>
-                <div class="summary-column">
-                  <dl class="dl-summary-callout">
                     <dt><a href="module-bbop-graph-graph.html#get_root_nodes">get_root_nodes()</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="module-bbop-graph-graph.html#get_singleton_nodes">get_singleton_nodes()</a></dt>
                     <dd>
                     </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
                     <dt><a href="module-bbop-graph-graph.html#id">id(value)</a></dt>
                     <dd>
                     </dd>
@@ -147,6 +147,9 @@
                     <dd>
                     </dd>
                     <dt><a href="module-bbop-graph-graph.html#is_root_node">is_root_node(nb_id)</a></dt>
+                    <dd>
+                    </dd>
+                    <dt><a href="module-bbop-graph-graph.html#is_topologically_equal">is_topologically_equal(comp_graph)</a></dt>
                     <dd>
                     </dd>
                     <dt><a href="module-bbop-graph-graph.html#load_base_json">load_base_json(json_object)</a></dt>
@@ -1220,6 +1223,45 @@
                   <p><code>boolean</code>&nbsp;- boolean</p>
                 </dd>
               </dl>
+              <h3 id="is_topologically_equal"><span class="symbol-name">is_topologically_equal</span><span class="signature"><span class="signature-params">(comp_graph)</span>&nbsp;&rarr; <span class="signature-returns"> Boolean</span></span></h3>
+              <p>True or false on whether or not a graph shares the same structure as the current graph. This means that the (top-level) nodes have the same IDs and every edge connects in the same way.</p>
+              <p>This does not compare things like meta information, etc.</p>
+              <p>BUG/TODO: This should probably be moved to the superclass. Would have an easier time optimizing in there too.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>comp_graph</p>
+                      </td>
+                      <td>
+                        <p>graph</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>graph to compare against</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Boolean</code>&nbsp;well is it?</p>
+                </dd>
+              </dl>
               <h3 id="load_base_json"><span class="symbol-name">load_base_json</span><span class="signature"><span class="signature-params">(json_object)</span>&nbsp;&rarr; <span class="signature-returns"> boolean</span></span></h3>
               <p>Load the graph from the specified JSON object (not string).</p>
               <p>TODO: a work in progress 'type' not currently imported (just as not exported); actually, a lot not imported.</p>
@@ -1497,7 +1539,7 @@
   <footer id="jsdoc-footer" class="jsdoc-footer">
     <div id="jsdoc-footer-container">
       <p>
-        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on June 16, 2015.
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.3.0 on July 25, 2015.
       </p>
     </div>
   </footer>

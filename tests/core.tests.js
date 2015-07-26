@@ -4,7 +4,7 @@
 
 var chai = require('chai');
 chai.config.includeStack = true;
-assert = chai.assert;
+var assert = chai.assert;
 var model = new require('..');
 
 ///
@@ -388,8 +388,8 @@ describe('removal functions work as expected', function(){
 	assert.equal(g.all_edges().length, 5, 'now five edges');
 	assert.equal(g.all_predicates().length, 1, 'one pred in graph');
 	assert.equal(g.get_singleton_nodes().length, 2, 'z and n single');
-	assert.equal(g.get_child_nodes('n').length, 0, 'n now no kids')
-	assert.equal(g.get_parent_nodes('d').length, 1, 'd now no parent')
+	assert.equal(g.get_child_nodes('n').length, 0, 'n now no kids');
+	assert.equal(g.get_parent_nodes('d').length, 1, 'd now no parent');
 
 	// Look at dangling.
 	assert.equal(g.all_dangling().length, 1, 'just one dangle');
@@ -467,7 +467,7 @@ describe('removal functions work as expected', function(){
 	assert.isTrue(g.remove_node('a', true), 'goodbye a');
 	assert.isTrue(g.remove_node('n', true), 'goodbye n');
 	assert.isTrue(g.remove_node('x', true), 'goodbye x');
-	assert.isTrue(g.remove_node('z', true), 'goodbye z')
+	assert.isTrue(g.remove_node('z', true), 'goodbye z');
 	assert.isTrue(g.remove_node('b', true), 'goodbye b');
 	assert.isTrue(g.remove_node('c', true), 'goodbye c');
 	assert.isTrue(g.remove_node('e', true), 'goodbye e');
@@ -503,7 +503,7 @@ describe('removal functions work as expected', function(){
 	assert.isTrue(g.remove_node('a'), 'goodbye a');
 	assert.isTrue(g.remove_node('n'), 'goodbye n');
 	assert.isTrue(g.remove_node('x'), 'goodbye x');
-	assert.isTrue(g.remove_node('z'), 'goodbye z')
+	assert.isTrue(g.remove_node('z'), 'goodbye z');
 	assert.isTrue(g.remove_node('b'), 'goodbye b');
 	assert.isTrue(g.remove_node('c'), 'goodbye c');
 	assert.isTrue(g.remove_node('e'), 'goodbye e');

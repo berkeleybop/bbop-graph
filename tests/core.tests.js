@@ -663,29 +663,38 @@ describe("does graph comparison work?", function(){
     });
 });
 
-// describe("looking for bugs in the lookup tables", function(){
+describe("looking for bugs in the lookup tables", function(){
 
-//     it('a lot of addition and removal, noctua like', function(){
+    it('a lot of addition and removal, noctua like', function(){
 
-// 	// Setup.
-// 	var g = new model.graph();
-// 	g.add_node(new model.node('a'));
-// 	g.add_node(new model.node('b'));
-// 	g.add_node(new model.node('c'));
-// 	g.add_node(new model.node('d'));
-// 	g.add_node(new model.node('e'));
-// 	g.add_node(new model.node('n'));
-// 	g.add_node(new model.node('x'));
-// 	g.add_node(new model.node('z'));
-// 	g.add_edge(new model.edge('b', 'a'));
-// 	g.add_edge(new model.edge('c', 'a'));
-// 	g.add_edge(new model.edge('d', 'c'));
-// 	g.add_edge(new model.edge('e', 'c'));
-// 	g.add_edge(new model.edge('d', 'n'));
-// 	g.add_edge(new model.edge('d', 'b', 'is_a'));
-// 	g.add_edge(new model.edge('y', 'x'));
+	// Setup--try and simulate minerva-05.json.
+	var g = new model.graph();
+	g.add_node(new model.node('f'));
+	g.add_node(new model.node('h'));
+	g.add_node(new model.node('N'));
+	g.add_node(new model.node('u'));
+	g.add_node(new model.node('b'));
+	g.add_node(new model.node('z'));
+	g.add_node(new model.node('a'));
+	g.add_edge(new model.edge('u', 'f', 'occurs_in'));
+	g.add_edge(new model.edge('u', 'h', 'enabled_by'));
+	g.add_edge(new model.edge('u', 'N', 'part_of'));
+	g.add_edge(new model.edge('a', 'b', 'occurs_in'));
+	g.add_edge(new model.edge('a', 'z', 'enabled_by'));
 
-// 	assert.isTrue(a.is_topologically_equal(a), "ident: a is same as a");
-//     });
+	assert.equal(g.get_child_nodes('f').length, 1, 'is foldable');
 
-// });
+	g.remove_node('b', true);
+
+	assert.equal(g.get_child_nodes('f').length, 1, 'is foldable');
+
+	g.remove_node('z', true);
+
+	assert.equal(g.get_child_nodes('f').length, 1, 'is foldable');
+
+	g.remove_node('a', true);
+
+	assert.equal(g.get_child_nodes('f').length, 1, 'is foldable');
+    });
+
+});

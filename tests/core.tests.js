@@ -247,7 +247,8 @@ describe('loading from JSON (good with Solr/GOlr)', function(){
     // Pre-run.    
     before(function() {
 
-	var jo = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],"edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
+	var jo = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],
+		  "edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
 	g1 = new model.graph();
 	g1.load_base_json(jo);
 
@@ -351,7 +352,8 @@ describe('roundtrip', function(){
 
     it('original obj and json', function(){
 	
-	var simp = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],"edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
+	var simp = {"nodes":[{"id":"a","lbl":"A"},{"id":"b","lbl":"B"}],
+		    "edges":[{"sub":"a","obj":"b","pred":"is_a"}]};
 	var g = new model.graph();
 	var l = g.load_base_json(simp);
 	var r = g.to_json();
@@ -594,9 +596,12 @@ describe('clone wars', function(){
 	//console.log(g_clone);
 
 	assert.equal(g.id(), g_clone.id(), 'clone has same id');
-	assert.equal(g.default_predicate, g_clone.default_predicate, 'clone has same pred');
-	assert.deepEqual(g.all_nodes(), g_clone.all_nodes(), 'clone has dupe nodes');
-	assert.deepEqual(g.all_edges(), g_clone.all_edges(), 'clone has dupe edges');
+	assert.equal(g.default_predicate, g_clone.default_predicate,
+		     'clone has same pred');
+	assert.deepEqual(g.all_nodes(), g_clone.all_nodes(),
+			 'clone has dupe nodes');
+	assert.deepEqual(g.all_edges(), g_clone.all_edges(),
+			 'clone has dupe edges');
     });
 });
 
@@ -653,6 +658,34 @@ describe("does graph comparison work?", function(){
 	b.remove_node('a');
 
 	// Should no longer be the same.
-	assert.isFalse(a.is_topologically_equal(b), "man: a is now not same as b");
+	assert.isFalse(a.is_topologically_equal(b),
+		       "man: a is now not same as b");
     });
 });
+
+// describe("looking for bugs in the lookup tables", function(){
+
+//     it('a lot of addition and removal, noctua like', function(){
+
+// 	// Setup.
+// 	var g = new model.graph();
+// 	g.add_node(new model.node('a'));
+// 	g.add_node(new model.node('b'));
+// 	g.add_node(new model.node('c'));
+// 	g.add_node(new model.node('d'));
+// 	g.add_node(new model.node('e'));
+// 	g.add_node(new model.node('n'));
+// 	g.add_node(new model.node('x'));
+// 	g.add_node(new model.node('z'));
+// 	g.add_edge(new model.edge('b', 'a'));
+// 	g.add_edge(new model.edge('c', 'a'));
+// 	g.add_edge(new model.edge('d', 'c'));
+// 	g.add_edge(new model.edge('e', 'c'));
+// 	g.add_edge(new model.edge('d', 'n'));
+// 	g.add_edge(new model.edge('d', 'b', 'is_a'));
+// 	g.add_edge(new model.edge('y', 'x'));
+
+// 	assert.isTrue(a.is_topologically_equal(a), "ident: a is same as a");
+//     });
+
+// });

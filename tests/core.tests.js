@@ -586,6 +586,7 @@ describe('clone wars', function(){
 	var g = new model.graph();
 	g.id('gid');
 	g.default_predicate = 'pred';
+	g.metadata({foo: 'bar'});
 	g.add_node(n1);
 	g.add_node(n2);
 	g.add_edge(e);
@@ -602,6 +603,10 @@ describe('clone wars', function(){
 			 'clone has dupe nodes');
 	assert.deepEqual(g.all_edges(), g_clone.all_edges(),
 			 'clone has dupe edges');
+	assert.deepEqual(g.metadata(), g_clone.metadata(),
+			 'clone has dupe metadata');
+	assert.deepEqual(g.metadata(), {foo: 'bar'},
+			 'metadata is correct');
     });
 });
 

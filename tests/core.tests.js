@@ -703,3 +703,100 @@ describe("looking for bugs in the lookup tables", function(){
     });
 
 });
+
+describe("trying to work with incomplete graphs", function(){
+
+    it('load from json, no meta', function(){
+	
+        var ng = {
+	    "nodes":[
+		{"id":"GO:0006688","lbl":"glycosphingolipid biosynthetic process"},
+		{"id":"GO:1990387","lbl":"isogloboside biosynthetic process"}
+	    ],
+	    "edges":[
+		{"sub":"GO:1990387","obj":"GO:0006688","pred":"is_a"}
+	    ]
+	};
+
+	// Setup.
+	var g_load = new model.graph();
+	var g_merge = new model.graph();
+	g_load.load_base_json(ng);
+	g_merge.merge_in(g_load);
+	
+	// Check relative equality.
+	assert.deepEqual(g_load.to_json(), ng, 'orig and load same');
+	assert.deepEqual(g_merge.to_json(), ng, 'orig and merge same');
+
+	// Probe graph.
+	assert.isFalse(g_load.incomplete_p(), 'not incomplete');
+	assert.equal(g_load.complete_node_count(), 2, 'two node(s) overall');
+	assert.equal(g_load.complete_edge_count(), 1, 'one edge(s) overall');
+	assert.deepEqual(g_load.metadata(), null, 'no metadata');
+    });
+
+    it('load from json, empty meta', function(){
+	
+        var ng = {
+	    "nodes":[
+		{"id":"GO:0006688","lbl":"glycosphingolipid biosynthetic process"},
+		{"id":"GO:1990387","lbl":"isogloboside biosynthetic process"}
+	    ],
+	    "edges":[
+		{"sub":"GO:1990387","obj":"GO:0006688","pred":"is_a"}
+	    ],
+	    "meta": {}
+	};
+
+	// Setup.
+	var g_load = new model.graph();
+	var g_merge = new model.graph();
+	g_load.load_base_json(ng);
+	g_merge.merge_in(g_load);
+	
+	// Check relative equality.
+	assert.deepEqual(g_load.to_json(), ng, 'orig and load same');
+	assert.deepEqual(g_merge.to_json(), ng, 'orig and merge same');
+
+	// Probe graph.
+	assert.isFalse(g_load.incomplete_p(), 'not incomplete');
+	assert.equal(g_load.complete_node_count(), 2, 'two node(s) overall');
+	assert.equal(g_load.complete_edge_count(), 1, 'one edge(s) overall');
+	assert.deepEqual(g_load.metadata(), {}, 'no metadata');
+    });
+
+    it('load from json, incomplete meta', function(){
+	
+        var ng = {
+	    "nodes":[
+		{"id":"GO:0006688","lbl":"glycosphingolipid biosynthetic process"},
+		{"id":"GO:1990387","lbl":"isogloboside biosynthetic process"}
+	    ],
+	    "edges":[
+		{"sub":"GO:1990387","obj":"GO:0006688","pred":"is_a"}
+	    ],
+	    "meta": {
+		"incomplete-p": true,
+		"complete-node-count": 200,
+		"complete-edge-count": 100
+	    }
+	};
+
+	// Setup.
+	var g_load = new model.graph();
+	var g_merge = new model.graph();
+	g_load.load_base_json(ng);
+	g_merge.merge_in(g_load);
+	
+	// Check relative equality.
+	assert.deepEqual(g_load.to_json(), ng, 'orig and load same');
+	assert.deepEqual(g_merge.to_json(), ng, 'orig and merge same');
+
+	// Probe graph.
+	assert.isTrue(g_load.incomplete_p(), 'incomplete');
+	assert.equal(g_load.complete_node_count(), 200, 'two c node(s) overall');
+	assert.equal(g_load.complete_edge_count(), 100, 'one c edge(s) overall');
+	assert.deepEqual(g_load.metadata(), ng.meta, 'metadata');
+    });
+
+});

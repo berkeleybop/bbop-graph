@@ -14,7 +14,7 @@ describe('test using GO data', function(){
     var go_nodes = null;
     var go_edges = null;
 
-    // Pre-run.    
+    // Pre-run.
     before(function() {
 	// Remember, we are running from the project root, so relative
 	// to there (?).
@@ -35,7 +35,7 @@ describe('test using GO data', function(){
 	    //print('index: ' + n + ' jnode: ' + jnode['id']);
 	    g.add_node(new model.node(jnode['id']));
 	}
-	
+
 	// Add all edges.
 	// print('all edges len: ' + bbop.model.go.edges.length);
 	for( var e = 0; e < go_edges.length; e++ ){
@@ -45,12 +45,12 @@ describe('test using GO data', function(){
 				      jedge['object'],
 				      jedge['predicate']));
 	}
-	
+
 	//
 	assert.equal(3, g.get_root_nodes().length);//, 'right number of GO roots');
 	assert.equal(false, g.is_leaf_node('GO:0022008'));//, 'neurogenesis ! a leaf');
 	assert.equal(true, g.is_leaf_node('GO:0048174'));//, 'but this should be');
-	
+
 	// Let's get serious about parents.
 	var p_hash = {};
 	var parents = g.get_parent_nodes('GO:0022008');
@@ -60,7 +60,7 @@ describe('test using GO data', function(){
 	assert.equal(2, parents.length);//, '2 parents');
 	assert.equal(true, p_hash['GO:0007399']);//, 'has 1 of 2');
 	assert.equal(true, p_hash['GO:0030154']);//, 'has 2 of 2');
-	
+
 	// Let's get serious about children.
 	var c_hash = {};
 	var children = g.get_child_nodes('GO:0022008');
@@ -73,7 +73,7 @@ describe('test using GO data', function(){
 	assert.equal(true, c_hash['GO:0050768']);//, 'has 3 of 5');
 	assert.equal(true, c_hash['GO:0050769']);//, 'has 4 of 5');
 	assert.equal(true, c_hash['GO:0050767']);//, 'has 5 of 5');
-	
+
 	// ファイト!
 	var sub = g.get_ancestor_subgraph('GO:0022008');
 	// Roots.
@@ -93,7 +93,25 @@ describe('test using GO data', function(){
 	assert.equal('GO:0048869', sub.get_child_nodes('GO:0009987')[0].id());//, 'to proc');
 	// General.
 	assert.equal(11, sub.all_nodes().length);//, '11 nodes');
-		
+
+	// ファイト II!
+	var dec = g.get_descendent_subgraph('GO:0022008');
+	// Roots.
+	assert.equal(1, dec.get_root_nodes().length);//, '1 sub root');
+	assert.equal(false, dec.is_root_node('GO:0008150'));//, 'sub root');
+	assert.equal(false, dec.is_root_node('GO:0032502'));//, '! sub root 1');
+	assert.equal(true, dec.is_root_node('GO:0022008'));//, '! sub root 2');
+	// Leaves.
+	assert.equal(228, dec.get_leaf_nodes().length);//, '1 leaf');
+	assert.equal(false, dec.is_leaf_node('GO:0022008'));//, 'sub leaf');
+	// Graph structure up.
+	assert.equal(0, dec.get_parent_nodes('GO:0008150').length);
+	assert.equal(0, dec.get_parent_nodes('GO:0022008').length);
+	assert.equal(0, dec.get_parent_nodes('GO:0030154').length);
+
+	// General.
+	assert.equal(490, dec.all_nodes().length);//, '490 nodes');
+
     });
 
 });

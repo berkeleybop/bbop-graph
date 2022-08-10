@@ -88,7 +88,7 @@ gulp.task('publish-npm', function() {
     var npm = require("npm");
     npm.load(function (er, npm) {
 	// NPM
-	npm.commands.publish();	
+	npm.commands.publish();
     });
 });
 

@@ -23,8 +23,8 @@
         "url": "git+https://github.com/berkeleybop/bbop-graph.git"
     },
     "engines": {
-        "node": ">= 0.12.2",
-        "npm": ">= 2.7.4"
+        "node": ">= 8.17.0",
+        "npm": ">= 6.13.4"
     },
     "dependencies": {
         "bbop-core": "0.0.5",
